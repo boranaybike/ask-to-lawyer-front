@@ -1,10 +1,32 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
+  <div v-if="lawyer">  
+    <LawyerNavigationDrawer/>
+  </div>
+  <div v-else>  
+    <CustomerNavigationDrawer/>
+  </div>
+
   <router-view/>
 </template>
+
+<script lang="ts">
+import { defineComponent } from 'vue';
+import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
+import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.vue"
+
+export default defineComponent({
+  components: {
+    CustomerNavigationDrawer,
+    LawyerNavigationDrawer  },
+
+    setup(){
+      const lawyer = false;
+      return{
+        lawyer
+      };
+    },
+});
+</script>
 
 <style lang="scss">
 #app {
