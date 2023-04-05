@@ -7,14 +7,55 @@ const routes: Array<RouteRecordRaw> = [
     name: 'home',
     component: HomeView
   },
+
   {
-    path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+    path: '/customer-offers',
+    name: 'customerOffers',
+    component: () => import('../views/Customer/CustomerOffersView.vue')
+  },
+  
+  {
+    path: '/old-questions',
+    name: 'oldQuestions',
+    component: () => import('../views/Customer/OldQuestionsView.vue')
+  },
+  
+  {
+    path: '/customer-pending-questions',
+    name: 'customerPendingQuestions',
+    component: () => import('../views/Customer/CustomerPendingQuestionsView.vue')
+  },
+  
+  {
+    path: '/customer-edit-account',
+    name: 'customerEditAcount',
+    component: () => import('../views/Customer/CustomerEditAccountView.vue')
+  },
+    
+  {
+    path: '/lawyer-pending-questions',
+    name: 'lawyerPendingQuestions',
+    component: () => import('../views/Lawyer/LawyerPendingQuestionsView.vue')
+  },
+
+  {
+    path: '/lawyer-edit-account',
+    name: 'lawyerEditAcount',
+    component: () => import('../views/Lawyer/LawyerEditAccountView.vue')
+  },
+
+  {
+    path: '/lawyer-offers',
+    name: 'lawyerOffers',
+    component: () => import("../views/Lawyer/LawyerOffersView.vue")
+  },
+
+  {
+    path: '/earnings',
+    name: 'earnings',
+    component: () => import("../views/Lawyer/EarningsView.vue")
+  },
+  
 ]
 
 const router = createRouter({
