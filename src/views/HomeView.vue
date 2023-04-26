@@ -6,6 +6,12 @@
     <v-icon icon="mdi-home" />
     <v-icon icon="mdi:mdi-minus" /> // This renders a MDI icon
   </div>
+  <div class="home">
+    <v-btn>
+      <button @click="">Kayıt Ol</button>
+    </v-btn>
+
+  </div>
   <div>
     <v-btn>
     <button @click="showModal = true">Giriş Yap</button>
@@ -19,6 +25,7 @@
   </Teleport>
   </div>
 </template>
+
 
 <script lang="ts">
 import { defineComponent } from 'vue';

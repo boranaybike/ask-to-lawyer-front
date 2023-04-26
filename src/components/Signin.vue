@@ -14,7 +14,7 @@ const props = defineProps({
           <slot name="header">default header</slot>
         </div>
         <div class="email">
-            <label for="email">E-mail</label>
+            <label for="email" style="margin-right: 335px; margin-bottom: 10px;">Email</label>
             <input type="email" id="email" v-model="email" required>
         </div>
 
@@ -51,6 +51,10 @@ const props = defineProps({
 
 #email{
   border: 1px solid #d5d5d5;
+  width: 380px;
+  border-radius: 10px;
+  background-color: white;
+  padding: 8px;
 
 }
 
@@ -105,10 +109,10 @@ const props = defineProps({
 
 .email {
   position: absolute;
-  width: 69px;
+  width: 51px;
   height: 29px;
-  left: 17px;
-  top: 166px;
+  left: 195px;
+  top: 140px;
 
   font-family: 'Inter';
   font-style: normal;
@@ -123,6 +127,7 @@ const props = defineProps({
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
+  flex-direction: column;
 }
 
 .password {
@@ -130,7 +135,7 @@ const props = defineProps({
   width: 51px;
   height: 29px;
   left: 195px;
-  top: 264px;
+  top: 270px;
 
   font-family: 'Inter';
   font-style: normal;
