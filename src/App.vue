@@ -1,28 +1,26 @@
 <template>
-  <div v-if="lawyer">  
-    <LawyerNavigationDrawer/>
-  </div>
-  <div v-else>  
-    <CustomerNavigationDrawer/>
-  </div>
+    <div>
+    <AppLayout>
+        <router-view>
+          
+        </router-view>
+    </AppLayout>    
+    </div>
 
-  <router-view/>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
-import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.vue"
+
+import AppLayout from "@/components/layouts/AppLayoutPage.vue"
 
 export default defineComponent({
   components: {
-    CustomerNavigationDrawer,
-    LawyerNavigationDrawer  },
+    AppLayout
+  },
 
     setup(){
-      const lawyer = false;
       return{
-        lawyer
       };
     },
 });
