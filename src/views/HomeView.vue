@@ -1,10 +1,12 @@
 <template>
   <div class="home">
+    <p>HOMEPAGE</p>
+<!-- 
     <v-btn>
       Button
     </v-btn>
     <v-icon icon="mdi-home" />
-    <v-icon icon="mdi:mdi-minus" /> // This renders a MDI icon
+    <v-icon icon="mdi:mdi-minus" /> // This renders a MDI icon -->
   </div>
   <div class="home">
     <v-btn>
