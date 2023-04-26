@@ -55,10 +55,10 @@ export default {
 </script>
 
 <style>
-.v-navigation-drawer{
-
+/* .v-navigation-drawer{
+position: inherit !important;
 background-color:#EC4C0F!important;
-}
+} */
 .menu{
   background-color: white !important;
   margin: 5%;
