@@ -8,22 +8,22 @@
     <v-icon icon="mdi-home" />
     <v-icon icon="mdi:mdi-minus" /> // This renders a MDI icon -->
   </div>
-  <div class="home">
-    <v-btn>
-      <button @click="">Kayıt Ol</button>
-    </v-btn>
-
+  <div>
+  <signupModal/>
   </div>
+
+
+
   <div>
     <v-btn>
-    <button @click="showModal = true">Giriş Yap</button>
+    <button @click="signinModalShow = true">Giriş Yap</button>
     </v-btn>
     <Teleport to="body">
-    <modal :show="showModal" @close="showModal = false">
+    <signinModal :show="signinModalShow" @close="signinModalShow = false">
       <template #header>
         <h3>Giriş Yap</h3>
       </template>
-    </modal>
+    </signinModal>
   </Teleport>
   </div>
 </template>
@@ -32,18 +32,26 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ref } from 'vue';
-import modal from '../components/Signin.vue'
+import signinModal from '../components/Signin.vue'
+import signupModal from '../components/Signup.vue'
+
 
 export default defineComponent({
   name: 'HomeView',
   components: {
-    modal
+    signinModal,
+    signupModal 
+  
       },
       setup() {
-    const showModal = ref(false);
+    const signinModalShow = ref(false);
+    const signupModalShow = ref(false);
+  
 
-    return { showModal };
+
+    return { signinModalShow , signupModalShow};
   },
     
 });
 </script>
+
