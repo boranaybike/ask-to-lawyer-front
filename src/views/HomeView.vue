@@ -19,11 +19,7 @@
     <button @click="signinModalShow = true">Giriş Yap</button>
     </v-btn>
     <Teleport to="body">
-    <signinModal :show="signinModalShow" @close="signinModalShow = false">
-      <template #header>
-        <h3>Giriş Yap</h3>
-      </template>
-    </signinModal>
+    <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
   </Teleport>
   </div>
 
