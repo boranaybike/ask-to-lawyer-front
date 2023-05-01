@@ -115,7 +115,7 @@ const props = defineProps({
 }
 
 .modalContainer {
-position: static;
+position: relative;
 width: 513px;
 height: 849px;
 padding: 20px 30px;
@@ -170,10 +170,9 @@ color: #FFFFFF;
 
 .nameSurname{
 position: absolute;
+justify-content: center;
 width: 135px;
 height: 29px;
-left: 48px;
-top: 137px;
 
 font-family: 'Inter';
 font-style: normal;

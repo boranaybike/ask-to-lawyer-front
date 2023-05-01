@@ -11,7 +11,7 @@ const props = defineProps({
     <div v-if="show" class="modal-mask">
       <div class="modal-container">
         <div class="modal-header">   
-          <slot name="header">default header</slot>
+          <h3>Giriş Yap</h3>
         </div>
         <div class="email">
             <label for="email" style="margin-right: 335px; margin-bottom: 10px;">Email</label>
@@ -39,7 +39,7 @@ const props = defineProps({
   </Transition>
 </template>
 
-<style>
+<style lang="scss" scoped>
 
 #password{
   border: 1px solid #d5d5d5;
@@ -83,7 +83,7 @@ const props = defineProps({
 
 }
 
-.modal-header h3 {
+h3 {
   position: absolute;
   width: 206px;
   height: 51px;
