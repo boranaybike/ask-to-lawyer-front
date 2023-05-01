@@ -1,21 +1,25 @@
-<template>
-  <div>
-      <n-layout>
-        <!-- <LayoutHeader /> -->
-        <n-layout-content>
-          <div v-if="lawyer">  
+    <template>          
+
+  <v-card>
+    <v-layout>
+      <v-app-bar color="surface-variant" title="Application bar"></v-app-bar>
+<v-main style="height:%100">
+      <div v-if="lawyer">  
             <LawyerNavigationDrawer/>
           </div>
           <div v-else>  
             <CustomerNavigationDrawer/>
           </div>
-          <slot />
-        </n-layout-content>
-        <!-- <LayoutFooter /> -->
-      </n-layout>
-    </div>
+        <v-container
+          style="min-height: 100%;"
+        >
+        <slot />
+        </v-container></v-main>
+      </v-layout>
+  </v-card>      
+
 </template>
-  
+
 <script lang="ts">
 import { defineComponent } from "vue";
 import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
@@ -33,4 +37,9 @@ export default defineComponent({
 });
 </script>
 
-<style scoped></style>
+<style scoped>
+.v-main{
+  display: flex;
+  height: 500px!important;
+}
+</style>

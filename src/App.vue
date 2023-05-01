@@ -1,12 +1,11 @@
 <template>
-    <div>
+    <div class="application">  
     <AppLayout>
         <router-view>
           
         </router-view>
     </AppLayout>    
     </div>
-
 </template>
 
 <script lang="ts">
@@ -32,7 +31,9 @@ export default defineComponent({
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+}
+.application{
+  background-color: #2c3e50;
 }
 
 nav {
