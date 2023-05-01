@@ -32,7 +32,7 @@
           
           </v-list>
         </v-navigation-drawer>
-        <v-main style="height: 250px"></v-main>
+        <v-main style="height: 500px"></v-main>
       </v-layout>
     </v-card>
   </template>
@@ -55,10 +55,9 @@ export default {
 </script>
 
 <style>
-/* .v-navigation-drawer{
-position: inherit !important;
-background-color:#EC4C0F!important;
-} */
+.v-theme--light{
+  padding:0 ;
+}
 .menu{
   background-color: white !important;
   margin: 5%;
