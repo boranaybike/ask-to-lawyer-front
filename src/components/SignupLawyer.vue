@@ -60,7 +60,7 @@ const props = defineProps({
   </Transition>
 </template>
 
-<style>
+<style lang="scss" scoped>
 #nameSurname{
   border: 1px solid #d5d5d5;
   width: 409px;
