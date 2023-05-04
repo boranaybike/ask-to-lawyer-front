@@ -1,9 +1,8 @@
-    <template>          
-
+<template>          
   <v-card>
     <v-layout>
       <v-app-bar color="surface-variant" title="Application bar"></v-app-bar>
-<v-main style="height:%100">
+      <v-main style="height:%100">
       <div v-if="lawyer">  
             <LawyerNavigationDrawer/>
           </div>
@@ -14,10 +13,10 @@
           style="min-height: 100%;"
         >
         <slot />
-        </v-container></v-main>
-      </v-layout>
+        </v-container>
+      </v-main>
+    </v-layout>
   </v-card>      
-
 </template>
 
 <script lang="ts">
@@ -40,6 +39,9 @@ export default defineComponent({
 <style scoped>
 .v-main{
   display: flex;
-  height: 500px!important;
+}
+.v-layout{
+  background-color: #33363F;
+
 }
 </style>

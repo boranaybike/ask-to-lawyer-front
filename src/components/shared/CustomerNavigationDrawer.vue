@@ -8,8 +8,8 @@
             <img
           style="border-radius: 50%; box-shadow: 0.1px 0.1px 10px grey; margin-top: 20px"
           width="100"
-          src="@/assets/images/ike.jpg"
-        />          <h1>Aybike Boran</h1>
+          src="@/assets/images/ike.jpg"/>          
+          <h1>Aybike Boran</h1>
   
           <v-divider></v-divider>
   
@@ -38,7 +38,10 @@
   </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
+  setup() {},
+
     name: "NavigationDrawer",
   components: {
   },
@@ -51,19 +54,11 @@ export default {
        ],
     }
   },
-}
+});
 </script>
 
 <style>
 .v-theme--light{
   padding:0 ;
-}
-.menu{
-  background-color: white !important;
-  margin: 5%;
-  width:100%;
-}
-h1{
-  color: white;
 }
 </style>
