@@ -1,38 +1,29 @@
 <template>
   <div class="home">
-    <p>HOMEPAGE</p>
-<!-- 
-    <v-btn>
-      Button
-    </v-btn>
-    <v-icon icon="mdi-home" />
-    <v-icon icon="mdi:mdi-minus" /> // This renders a MDI icon -->
-  </div>
-  <div>
-  <signupModal/>
-  </div>
+    <profile/>
+    <div>
+      <signupModal/>
+    </div>
 
+    <div>
+      <v-btn>
+        <button @click="signinModalShow = true">Giriş Yap</button>
+      </v-btn>
+      <Teleport to="body">
+      <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
+      </Teleport>
+    </div>
 
+    <div>
+      <v-btn>
+      <button @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol</button>
+      </v-btn>
+      <Teleport to="body">
+      <signupLawyer :show="signupLawyerShow" @close="signupLawyerShow= false">
 
-  <div>
-    <v-btn>
-    <button @click="signinModalShow = true">Giriş Yap</button>
-    </v-btn>
-    <Teleport to="body">
-    <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
-  </Teleport>
-  </div>
-
-  <div>
-    <v-btn>
-    <button @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol</button>
-    </v-btn>
-    <Teleport to="body">
-    <signupLawyer :show="signupLawyerShow" @close="signupLawyerShow= false">
-
-    </signupLawyer>
-  </Teleport>
-  </div>
+      </signupLawyer>
+    </Teleport>
+    </div>
 
   <div>
     <v-btn>
@@ -45,6 +36,8 @@
   </Teleport>
   </div>
 
+  </div>
+
 </template>
 
 
@@ -55,6 +48,7 @@ import signinModal from '../components/Signin.vue'
 import signupModal from '../components/Signup.vue'
 import signupLawyer from '../components/SignupLawyer.vue'
 import signupCustomer from '../components/SignupCustomer.vue'
+import profile from '../components/shared/LawyerProfileEdit.vue'
 
 export default defineComponent({
   name: 'HomeView',
@@ -62,7 +56,8 @@ export default defineComponent({
     signinModal,
     signupModal,
     signupLawyer,
-    signupCustomer
+    signupCustomer,
+    profile
   
       },
       setup() {
