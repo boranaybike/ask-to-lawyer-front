@@ -41,7 +41,10 @@
   </template>
 
 <script lang="ts">
-export default {
+import { defineComponent } from "vue";
+export default defineComponent({
+  setup() {},
+
     name: "NavigationDrawer",
   components: {
   },
@@ -54,7 +57,7 @@ export default {
        ],
     }
   },
-}
+});
 </script>
 
 <style>
