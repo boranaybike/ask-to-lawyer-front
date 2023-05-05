@@ -7,29 +7,33 @@
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="firstname"
-                        :rules="nameRules"
+                        :rules="firstnameRules"
                         :counter="10"
                         label="İsim"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="lastname"
-                        :rules="nameRules"
+                        :rules="lastnameRules"
                         :counter="10"
                         label="Soyisim"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="phone"
-                        :rules="emailRules"
+                        :rules="phoneRules"
                         label="Telefon numarası"
                         required
+                        bg-color="white"
+
                     ></v-text-field>
                     </v-col>
                     
@@ -39,26 +43,29 @@
                         :rules="emailRules"
                         label="E-Posta"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6">
                     <v-text-field
-                        v-model="password"
-                        :rules="emailRules"
-                        label="Şifre"
+                        v-model="password1"
+                        :rules="password1Rules"
+                        label="Yeni şifre"
                         required
+                        bg-color="white"
                     ></v-text-field>
                             </v-col>
                             <v-col cols="12" md="6">
                             <v-text-field
-                                v-model="password"
-                                :rules="emailRules"
-                                label="Şifre (tekrar)"
+                                v-model="password2"
+                                :rules="password2Rules"
+                                label="Yeni şifre (tekrar)"
                                 required
+                                bg-color="white"
                             ></v-text-field>
                         </v-col>                
-                        <v-btn type="submit" block class="mt-2">Submit</v-btn>
+                        <v-btn rounded type="submit" block class="mt-2">Submit</v-btn>
                     </v-row>
                 </v-container>
 
@@ -67,34 +74,59 @@
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script setup>
+import { ref, onMounted } from 'vue';
 
-  export default defineComponent({
-    data: () => ({
-      valid: false,
-      firstname: 'Zeynep',
-      lastname: 'Altınkaymak',
-      phone: '050505050505',
-      password: 'zeynep.1998',
+      const valid= ref(false);
+      const firstname = ref('Zeynep');
+      const firstnameRules= ref([
+        value => {
+          if (value?.length > 30) return "İsim 30 karakterden fazla olamaz"
+          if (value?.length < 3) return "İsim en az 3 karakterli olmalıdır."
+          return true;}
+      ]);
+
+      const lastname= ref('Altınkaymak');
+      const lastnameRules= ref([
+        value => {
+          if (value?.length > 20) return "Soyisim 20 karakterden fazla olamaz"
+          if (value?.length < 3) return "Soyisim en az 2 karakterli olmalıdır."
+          return true;}
+      ]);
       
-      nameRules: [
-        value => {
-          if (value?.length <= 10) return true
 
-          return 'Name must be less than 10 characters.'
-        },
-      ],
-      email: 'zeyna_05@gmail.com',
-      emailRules: [
+      const password1= ref('zeynep.1998');
+      const password1Rules= ref([
         value => {
-          if (/.+@.+\..+/.test(value)) return true
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;}
+      ]);
 
-          return 'E-mail must be valid.'
+      const password2= ref('zeynep.1998');
+      const password2Rules= ref([
+        value => {
+          if (password1.value != password2.value) return "Girilen şifreler eşleşmiyor."
+          return true;
+        }
+      ]);
+
+      const phone= ref('050505050505');
+      const phoneRules= ref([
+      value => {
+        if (value?.length == 10) return true;
+
+        return 'Lütfen geçerli bir telefon numarası giriniz.'
         },
-      ],
-    }),
-  });
+      ]);
+
+      const email= ref('zeyna_05@gmail.com');
+      const emailRules= ref([
+        value => {
+          if (/.+@.+\..+/.test(value)) return true;
+
+          return 'Lütfen geçerli bir e-posta adresi giriniz.'
+        },
+      ]);
 </script>
 
 <style lang="scss" scoped>
@@ -102,5 +134,14 @@ import { defineComponent } from 'vue';
     max-width: 50vw;
     padding : 3vw;    
     border-radius: 3%;
+}
+
+.mt-2{
+    background-color:#EC4C0F;
+    color: white;
+    font-size:15px;
+}
+.v-text-field{
+  background:white;
 }
 </style>

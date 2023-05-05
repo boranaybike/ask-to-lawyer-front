@@ -1,6 +1,6 @@
 <template>
   <div class="customer-edit-account">
-    <p>this is an edit-account page for customers</p>
+    <CustomerEditProfile/>  
   </div>
 </template>
   
@@ -8,9 +8,18 @@
   
 <script lang="ts">
 import { defineComponent } from 'vue';
+import CustomerEditProfile from '@/components/shared/CustomerProfileEdit.vue'
 
 export default defineComponent({
   name: 'CustomerEditAccountView',
-  components: {  },
+  components: { CustomerEditProfile },
+  
+  setup() { 
+
+
+    return { CustomerEditProfile};
+  }
 });
 </script>
+<style lang="scss" scoped>
+</style>

@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <profile/>
     <div>
       <signupModal/>
     </div>
@@ -65,9 +64,6 @@ export default defineComponent({
     const signupModalShow = ref(false);
     const signupLawyerShow = ref(false);
     const signupCustomerShow = ref(false);
-  
-
-
     return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow};
   },
     
