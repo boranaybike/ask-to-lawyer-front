@@ -1,14 +1,15 @@
 <template>
   <div class="customer-pending-questions">
-    <p>this is a pending-questions page for customer</p>
+    <PendingQuestionsCard/>
   </div>
 </template>
   
 <script lang="ts">
 import { defineComponent } from 'vue';
+import PendingQuestionsCard from '@/components/customer/PendingQuestionsCard.vue'
 
 export default defineComponent({
   name: 'CustomerPendingQuestionsView',
-  components: {  },
+  components: { PendingQuestionsCard },
 });
 </script>
