@@ -1,7 +1,5 @@
 <template>
-    <div class="lawyer-edit-account">
-      <p>this is an edit-account page for lawyers</p>
-    </div>
+      <LawyerEditProfile/>
 </template>
     
     
@@ -9,10 +7,15 @@
     
 <script lang="ts">
   import { defineComponent } from 'vue';
-  
+  import LawyerEditProfile from '@/components/shared/LawyerProfileEdit.vue'
+
   export default defineComponent({
     name: 'LawyerEditAccountView',
-    components: {  },
+    components: { LawyerEditProfile },
+    setup() {    
+      return {LawyerEditProfile};
+},
+
   });
 </script>
   

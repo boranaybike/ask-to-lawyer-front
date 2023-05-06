@@ -7,29 +7,32 @@
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="firstname"
-                        :rules="nameRules"
+                        :rules="firstnameRules"
                         :counter="10"
                         label="İsim"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="lastname"
-                        :rules="nameRules"
+                        :rules="lastnameRules"
                         :counter="10"
                         label="Soyisim"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="phone"
-                        :rules="emailRules"
+                        :rules="phoneRules"
                         label="Telefon numarası"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
                     
@@ -39,53 +42,56 @@
                         :rules="emailRules"
                         label="E-Posta"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
                     
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="baro"
-                        :rules="emailRules"
                         label="Baro"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
                     
                     <v-col cols="12" md="6">
                     <v-text-field
                         v-model="area"
-                        :rules="emailRules"
                         label="Uzmanlık Alanı"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="12">
                     <v-text-field
                         v-model="about"
-                        :rules="emailRules"
                         label="Hakkımda"
                         required
+                        bg-color="white"
                     ></v-text-field>
                     </v-col>
 
                     <v-col cols="12" md="6">
                     <v-text-field
-                        v-model="password"
-                        :rules="emailRules"
+                        v-model="password1"
+                        :rules="password1Rules"
                         label="Şifre"
                         required
+                        bg-color="white"
                     ></v-text-field>
                             </v-col>
                             <v-col cols="12" md="6">
                             <v-text-field
-                                v-model="password"
-                                :rules="emailRules"
+                                v-model="password2"
+                                :rules="password2Rules"
                                 label="Şifre (tekrar)"
                                 required
+                                bg-color="white"
                             ></v-text-field>
                         </v-col>
-                        <v-btn type="submit" block class="mt-2">Submit</v-btn>
+                        <v-btn rounded type="submit" block class="mt-2">Submit</v-btn>
 
                     </v-row>
                 </v-container>
@@ -94,38 +100,61 @@
     </div>
 </template>
 
-<script>
-import { defineComponent } from 'vue';
+<script setup>
+import { ref, onMounted } from 'vue';
+  
+    const valid = ref(false);
+    const baro = ref('Antalya');
+    const area = ref('Ceza hukuku');
+    const about = ref('Süper bir ceza hukuku avukatıyım tam bir fiyat performans ürünüyüm.');      
+      const firstname = ref('Zeynep');
+      const firstnameRules= ref([
+        value => {
+          if (value?.length > 30) return "İsim 30 karakterden fazla olamaz"
+          if (value?.length < 3) return "İsim en az 3 karakterli olmalıdır."
+          return true;}
+      ]);
 
-  export default defineComponent({
-    data: () => ({
-      valid: false,
-      firstname: 'Zeynep',
-      lastname: 'Altınkaymak',
-      phone: '050505050505',
-      password: 'zeynep.1998',
-      baro: 'Antalya',
-      area:'Ceza hukuku',
-      about:'Süper bir ceza hukuku avukatıyım tam bir fiyat performans ürünüyüm.',
-
+      const lastname= ref('Altınkaymak');
+      const lastnameRules= ref([
+        value => {
+          if (value?.length > 20) return "Soyisim 20 karakterden fazla olamaz"
+          if (value?.length < 3) return "Soyisim en az 2 karakterli olmalıdır."
+          return true;}
+      ]);
       
-      nameRules: [
+      const password1= ref('zeynep.1998');
+      const password1Rules= ref([
         value => {
-          if (value?.length <= 10) return true
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;}
+      ]);
 
-          return 'Name must be less than 10 characters.'
-        },
-      ],
-      email: 'zeyna_05@gmail.com',
-      emailRules: [
+      const password2= ref('zeynep.1998');
+      const password2Rules= ref([
         value => {
-          if (/.+@.+\..+/.test(value)) return true
+          if (password1.value != password2.value) return "Girilen şifreler eşleşmiyor."
+          return true;
+        }
+      ]);
 
-          return 'E-mail must be valid.'
+      const phone= ref('050505050505');
+      const phoneRules= ref([
+      value => {
+        if (value?.length == 10) return true;
+
+        return 'Lütfen geçerli bir telefon numarası giriniz.'
         },
-      ],
-    }),
-  });
+      ])
+
+      const email= ref('zeyna_05@gmail.com');
+      const emailRules= ref([
+        value => {
+          if (/.+@.+\..+/.test(value)) return true;
+
+          return 'Lütfen geçerli bir e-posta adresi giriniz.'
+        },
+      ]);
 </script>
 
 <style lang="scss" scoped>
