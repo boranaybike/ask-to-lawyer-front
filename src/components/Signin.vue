@@ -80,7 +80,7 @@ const props = defineProps({
   transition: all 0.3s ease;
   background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/signin.jpg);
   background-size: cover;
-
+  background-position: center;
 }
 
 h3 {

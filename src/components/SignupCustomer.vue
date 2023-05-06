@@ -15,27 +15,27 @@ const props = defineProps({
         </div>
 
         <div class="nameSurname">
-            <label for="nameSurname" style="margin-right: 335px; margin-bottom: 10px;">İsim Soyisim</label>
+            <label for="nameSurname" >İsim Soyisim</label>
             <input type="nameSurname" id="nameSurname" v-model="nameSurname" required>
         </div>
 
         <div class="email">
-            <label for="email" style="margin-right: 335px; margin-bottom: 10px;">Email</label>
+            <label for="email" >E-mail</label>
             <input type="email" id="email" v-model="email" required>
         </div>
 
         <div class="telphone">
-            <label for="telphone" style="margin-right: 335px; margin-bottom: 10px;">Telefon</label>
+            <label for="telphone" >Telefon</label>
             <input type="telphone" id="telphone" v-model="telphone" required>
         </div>        
 
         <div class="password">
-            <label for="password" style="margin-right: 335px; margin-bottom: 10px;">Şifre</label>
+            <label for="password" >Şifre</label>
             <input type="password" id="password" v-model="password" required>
         </div>
 
-        <div class="password">
-            <label for="password" style="margin-right: 335px; margin-bottom: 10px;">Şifre Tekrar</label>
+        <div class="passwordagain">
+            <label for="password" >Şifre Tekrar</label>
             <input type="password" id="password" v-model="password" required>
         </div>
 
@@ -61,8 +61,8 @@ const props = defineProps({
 position: absolute;
 width: 409px;
 height: 37px;
-left: 48px;
-top: 169px;
+left: 3px;
+top: 40px;
 
 background: #FFFFFF;
 border-radius: 10px;
@@ -72,8 +72,8 @@ border-radius: 10px;
 position: absolute;
 width: 409px;
 height: 37px;
-left: 48px;
-top: 169px;
+left: 3px;
+top: 40px;
 
 background: #FFFFFF;
 border-radius: 10px;
@@ -83,8 +83,8 @@ border-radius: 10px;
 position: absolute;
 width: 409px;
 height: 37px;
-left: 48px;
-top: 169px;
+left: 3px;
+top: 40px;
 
 background: #FFFFFF;
 border-radius: 10px;
@@ -94,8 +94,8 @@ border-radius: 10px;
 position: absolute;
 width: 409px;
 height: 37px;
-left: 48px;
-top: 169px;
+left: 3px;
+top: 40px;
 
 background: #FFFFFF;
 border-radius: 10px;
@@ -104,6 +104,8 @@ border-radius: 10px;
 
 .modalmask {
   position: fixed;
+  justify-content: center;
+  align-items: center;
   z-index: 9998;
   top: 0;
   left: 0;
@@ -114,12 +116,13 @@ border-radius: 10px;
 }
 
 .modalcontainer {
-position: static;
+position: relative;
 width: 513px;
-height: 849px;
+height: 709px;
 padding: 20px 30px;
 border-radius: 20px;
 background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/customer_signup.jpg);
+background-position: center;
 opacity: 0.99;
 box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
 transition: all 0.3s ease;
@@ -152,59 +155,104 @@ color: #FFFFFF;
   margin-left: 115px;
   color: white;
 }
+.nameSurname{
+  position: absolute;
+  width: 163px;
+  height: 36px;
+  left: 48px;
+  top: 133px;
 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
 .email {
   position: absolute;
-  width: 51px;
-  height: 29px;
-  left: 195px;
-  top: 140px;
+  width: 84px;
+  height: 36px;
+  left: 48px;
+  top: 218px;
 
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-  /* identical to box height */
-
-
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 36px;
   display: flex;
   align-items: center;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
-  flex-direction: column;
 }
+.telphone{
+  position: absolute;
+  width: 99px;
+  height: 36px;
+  left: 48px;
+  top: 306px;
 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+}
 .password {
   position: absolute;
-  width: 51px;
-  height: 29px;
-  left: 195px;
-  top: 270px;
+  width: 61px;
+  height: 36px;
+  left: 48px;
+  top: 396px;
 
   font-family: 'Inter';
   font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 36px;
   display: flex;
   align-items: center;
   letter-spacing: -0.02em;
 
   color: #FFFFFF;
 
-  flex-direction: column;
-  
 }
+.passwordagain{
+  position: absolute;
+  width: 151px;
+  height: 36px;
+  left: 48px;
+  top: 484px;
 
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.02em;
+
+  color: #FFFFFF;
+
+}
 .modal-default-button {
   position: absolute;
-  width: 229px;
-  height: 45px;
-  left: 97px;
-  top: 424px;
+  width: 300px;
+  height: 55px;
+  left: 100px;
+  top: 611px;
 
   background: #EC4C0F;
   border-radius: 20px;
