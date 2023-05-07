@@ -10,6 +10,9 @@ const props = defineProps({
   
     <div v-if="show" class="modal-mask">
       <div class="modal-container">
+        <button style="float: right; color: white;"
+              @click="$emit('close')"
+            >X</button>
         <div class="modal-header">   
           <h3>Giriş Yap</h3>
         </div>

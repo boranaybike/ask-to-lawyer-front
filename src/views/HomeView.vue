@@ -5,8 +5,7 @@
     </div>
 
     <div>
-      <v-btn>
-        <button @click="signinModalShow = true">Giriş Yap</button>
+      <v-btn @click="signinModalShow = true">Giriş Yap
       </v-btn>
       <Teleport to="body">
       <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
@@ -14,8 +13,7 @@
     </div>
 
     <div>
-      <v-btn>
-      <button @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol</button>
+      <v-btn @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol
       </v-btn>
       <Teleport to="body">
       <signupLawyer :show="signupLawyerShow" @close="signupLawyerShow= false">
@@ -25,8 +23,7 @@
     </div>
 
   <div>
-    <v-btn>
-    <button @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol</button>
+    <v-btn @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
     </v-btn>
     <Teleport to="body">
     <signupCustomer :show="signupCustomerShow" @close="signupCustomerShow = false">
