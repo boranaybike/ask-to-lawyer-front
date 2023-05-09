@@ -36,7 +36,8 @@ export default {
   },
 }
 </script>
-<style>
+
+<style lang="scss" scoped>
 .v-card-text{
     position: absolute;
     width: 376px;
