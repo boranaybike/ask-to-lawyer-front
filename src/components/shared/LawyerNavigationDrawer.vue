@@ -35,7 +35,7 @@
           
           </v-list>
         </v-navigation-drawer>
-        <v-main style="height: 250px"></v-main>
+        <v-main style="height: 500px"></v-main>
       </v-layout>
     </v-card>
   </template>
@@ -61,8 +61,8 @@ export default defineComponent({
 </script>
 
 <style>
-.v-navigation-drawer{
 
+.v-navigation-drawer{
 background-color:#EC4C0F!important;
 }
 .menu{
