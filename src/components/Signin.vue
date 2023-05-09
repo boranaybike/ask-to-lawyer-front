@@ -12,7 +12,7 @@ const props = defineProps({
       <div class="modal-container">
         <button style="float: right; color: white;"
               @click="$emit('close')"
-            >X</button>
+            ><v-icon icon="mdi-close"></v-icon></button>
         <div class="modal-header">   
           <h3>Giriş Yap</h3>
         </div>

@@ -4,6 +4,7 @@
       <signupModal/>
       <frame18/>
       <frame17/>
+      <frame21/>
     </div>
 
     <div>
@@ -49,6 +50,7 @@ import signupCustomer from '../components/SignupCustomer.vue'
 import profile from '../components/shared/LawyerProfileEdit.vue'
 import frame18 from '../components/frame18.vue'
 import frame17 from '../components/frame17.vue'
+import frame21 from '../components/frame21.vue'
 
 export default defineComponent({
   name: 'HomeView',
@@ -60,6 +62,7 @@ export default defineComponent({
     profile,
     frame18,
     frame17,
+    frame21,
   
       },
       setup() {
@@ -69,7 +72,8 @@ export default defineComponent({
     const signupCustomerShow = ref(false);
     const frame18Show = ref(false);
     const frame17Show = ref(false);
-    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show};
+    const frame21Show = ref(false);
+    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show, frame21Show};
   },
     
 });
