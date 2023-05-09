@@ -5,8 +5,8 @@
     </div>
 
     <div>
-      <v-btn>
-        <button @click="signinModalShow = true">Giriş Yap</button>
+      <v-btn @click="signinModalShow = true"> 
+        <button >Giriş Yap</button>
       </v-btn>
       <Teleport to="body">
       <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
