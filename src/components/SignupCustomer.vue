@@ -10,6 +10,11 @@ const props = defineProps({
   
     <div v-if="show" class="modalmask">
       <div class="modalcontainer">
+        <button style="float: right; color: white;"
+              @click="$emit('close')"
+            ><v-icon icon="mdi-close"></v-icon></button>
+
+
         <div class="modalheader">   
           <h3>Danışan Olarak Kayıt Ol</h3>
         </div>
