@@ -9,16 +9,18 @@
             
             v-bind="props"
           >
-            frame 18
+            frame 21
           </v-btn>
         </template>
   
         <v-card style="position: relative; width: 596px; height: 186px; background: #E7ECEF; border-radius: 20px;">
           <v-card-text>
-            Ödeme Sayfasına Yönlendiriliyorsunuz...
+            Ödemeniz Hesabınıza Yatırılmıştır.
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="dialog = false">X</v-btn>
+            <v-btn @click="dialog = false">
+              <v-icon icon="mdi-close"></v-icon>
+            </v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -34,6 +36,7 @@ export default {
   },
 }
 </script>
+
 <style lang="scss" scoped>
 .v-card-text{
     position: absolute;
@@ -41,6 +44,7 @@ export default {
     height: 24px;
     left: 118px;
     top: 81px;
+    text-align: center;
 
     font-family: 'Inter';
     font-style: normal;
