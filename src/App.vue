@@ -1,21 +1,43 @@
 <template>
     <div class="application">  
-    <AppLayout>
+      <v-app>
+        <v-toolbar>
+          <Header/>
+        </v-toolbar>
+
+        
+        
+        
+        
+        <AppLayout>
         <router-view>
           
         </router-view>
     </AppLayout>    
+  
+      <v-footer>
+        <Footer/>
+      </v-footer>
+    </v-app>
+
     </div>
+
+
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
 
 import AppLayout from "@/components/layouts/AppLayoutPage.vue"
+import Footer from "@/components/layouts/Footer.vue"
+import Header from "@/components/layouts/Header.vue"
 
 export default defineComponent({
   components: {
-    AppLayout
+    AppLayout,
+    Footer,
+    Header,
+    
   },
 
     setup(){
