@@ -51,8 +51,8 @@ const routes: Array<RouteRecordRaw> = [
   },
 
   {
-    path: '/earnings',
-    name: 'earnings',
+    path: '/lawyer-earnings',
+    name: 'lawyerEarnings',
     component: () => import("../views/Lawyer/EarningsView.vue")
   },
   

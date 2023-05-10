@@ -9,25 +9,25 @@
           style="border-radius: 50%; box-shadow: 0.1px 0.1px 10px grey; margin-top: 20px"
           width="100"
           src="@/assets/images/ike.jpg"/>          
-          <h1>Aybike Boran</h1>
+          <h1>{{name}}</h1>
   
           <v-divider></v-divider>
   
           <v-list density="compact" nav>
             <router-link style="text-decoration: none;" to="/customer-edit-account">
-              <v-list-item class="menu" prepend-icon="mdi-home-city" title="Profili düzenle"></v-list-item>
+              <v-list-item class="menu" prepend-icon="mdi-account" title="Profili düzenle"></v-list-item>
             </router-link>
 
             <router-link style="text-decoration: none;" to="/customer-pending-questions">
-              <v-list-item  class="menu" prepend-icon="mdi-account-group-outline" title="Bekleyen Sorular"></v-list-item>
+              <v-list-item  class="menu" prepend-icon="mdi-clock" title="Bekleyen Sorular"></v-list-item>
             </router-link>
             
             <router-link style="text-decoration: none;" to="/old-questions">
-              <v-list-item  class="menu" prepend-icon="mdi-account-group-outline" title="Geçmiş Sorularım"></v-list-item>
+              <v-list-item  class="menu" prepend-icon="mdi-check-all" title="Geçmiş Sorularım"></v-list-item>
             </router-link>
             
             <router-link style="text-decoration: none;" to="/customer-offers">
-              <v-list-item  class="menu" prepend-icon="mdi-account-group-outline" title="Tekliflerim"></v-list-item>
+              <v-list-item  class="menu" prepend-icon="mdi-heart" title="Tekliflerim"></v-list-item>
             </router-link>
           
           </v-list>
@@ -38,27 +38,40 @@
   </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 export default defineComponent({
-  setup() {},
-
-    name: "NavigationDrawer",
-  components: {
-  },
-  data () {
+  name: "CustomerNavigationDrawer",
+  
+  setup() {
+    const name = ref("Haluk Levent");
     return {
-      items: [
-        { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'Offer', icon: 'mdi-account' },
-        { title: 'Users', icon: 'mdi-account-group-outline' }
-       ],
+      name
     }
   },
+
+  components: {
+  },
+
 });
 </script>
 
 <style>
 .v-theme--light{
   padding:0 ;
+}
+
+.v-list-item__content{
+  text-align: left;
+}
+.v-navigation-drawer{
+background-color:#EC4C0F!important;
+}
+.menu{
+  background-color: white !important;
+  margin: 5%;
+  width:100%;
+}
+h1{
+  color: white;
 }
 </style>

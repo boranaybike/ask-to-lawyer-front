@@ -1,15 +1,15 @@
 <template>
-  <div class="old-questions">
-    <p>this is an old-questions page</p>
+  <div class="customer-old-questions">
+    <OldQuestionsCard/>
   </div>
 </template>
   
-  
 <script lang="ts">
 import { defineComponent } from 'vue';
+import OldQuestionsCard from '@/components/customer/OldQuestionsCard.vue'
 
 export default defineComponent({
-  name: 'OldQuestionsView',
-  components: {  },
+  name: 'CustomerOldQuestionsView',
+  components: { OldQuestionsCard },
 });
 </script>

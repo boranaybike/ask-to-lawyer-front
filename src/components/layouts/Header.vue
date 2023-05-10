@@ -18,7 +18,7 @@
         <v-icon>mdi-bell</v-icon>
       </v-btn>
 
-      <v-btn icon style="background-color: rgba(0, 0, 0, 0.466);">
+      <v-btn icon style="background-color: rgba(0, 0, 0, 0.267);">
         <v-icon >mdi-account</v-icon>
       </v-btn></div>
     </v-toolbar>
