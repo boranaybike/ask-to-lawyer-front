@@ -1,16 +1,18 @@
 <template>
     <div class="earnings">
-      <p>this is an earnings page</p>
+      <LawyerProfits/>
     </div>
   </template>
     
     
   <script lang="ts">
   import { defineComponent } from 'vue';
+  import LawyerProfits from '@/components/shared/LawyerProfits.vue';
+  
   
   export default defineComponent({
     name: 'EarningsPage',
-    components: {  },
+    components: { LawyerProfits },
   });
   </script>
   
