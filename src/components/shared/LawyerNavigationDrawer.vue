@@ -11,26 +11,26 @@
           width="100"
           src="@/assets/images/ike.jpg"
         />
-        <h1>Aybisko Boran</h1>
+        <h1>Av. {{name}}</h1>
           </template>
   
           <v-divider></v-divider>
   
           <v-list density="compact" nav>
             <router-link style="text-decoration: none;" to="/lawyer-edit-account">
-              <v-list-item class="menu" prepend-icon="mdi-home-city" title="Profili düzenle" value="home"></v-list-item>
+              <v-list-item class="menu" prepend-icon="mdi-account" title="Profili düzenle" value="home"></v-list-item>
             </router-link>
 
             <router-link style="text-decoration: none;" to="/lawyer-pending-questions">
-              <v-list-item  class="menu" onclick="" prepend-icon="mdi-account-group-outline" title="Bekleyen Sorular" value="users"></v-list-item>
+              <v-list-item  class="menu" onclick="" prepend-icon="mdi-clock" title="Bekleyen Sorular" value="users"></v-list-item>
             </router-link>
             
                         <router-link style="text-decoration: none;" to="/earnings">
-              <v-list-item  class="menu" onclick="" prepend-icon="mdi-account-group-outline" title="Kazançlar" value="users"></v-list-item>
+              <v-list-item  class="menu" onclick="" prepend-icon="mdi-cash-multiple" title="Kazançlar" value="users"></v-list-item>
             </router-link>
             
             <router-link style="text-decoration: none;" to="/lawyer-offers">
-              <v-list-item  class="menu" onclick="" prepend-icon="mdi-account-group-outline" title="Tekliflerim" value="users"></v-list-item>
+              <v-list-item  class="menu" onclick="" prepend-icon="mdi-heart" title="Tekliflerim" value="users"></v-list-item>
             </router-link>
           
           </v-list>
@@ -41,30 +41,22 @@
   </template>
 
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, ref } from "vue";
 export default defineComponent({
-  setup() {},
+  name: "LawyerNavigationDrawer",
 
-    name: "NavigationDrawer",
+  setup() {
+    const name = ref("Haluk Levent");
+
+    return { name
+    };},
+
   components: {
-  },
-  data () {
-    return {
-      items: [
-        { title: 'Home', icon: 'mdi-home-city' },
-        { title: 'Offer', icon: 'mdi-account' },
-        { title: 'Users', icon: 'mdi-account-group-outline' }
-       ],
-    }
   },
 });
 </script>
 
-<style>
-
-.v-navigation-drawer{
-background-color:#EC4C0F!important;
-}
+<style scoped>
 .menu{
   background-color: white !important;
   margin: 5%;
@@ -72,5 +64,8 @@ background-color:#EC4C0F!important;
 }
 h1{
   color: white;
+}
+.v-list-item__content{
+  text-align: left;
 }
 </style>

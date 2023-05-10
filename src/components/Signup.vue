@@ -39,6 +39,7 @@
               </v-card>
             </v-col>
           </v-row>
+          <p>Üyeliğiniz var mı? <a href="" style="color:#EC4C0F;">giriş yapın.</a></p>
         </v-container>
       </v-card>
     </v-dialog>
@@ -75,5 +76,13 @@ export default {
 .text-white{
   background: rgba(0, 0, 0, 0.5);
   text-align: center;
+}
+p{
+  text-align: center;
+  padding-top:2%;
+}
+.text-h4{
+  padding-top:0!important;
+  padding-bottom:2%;
 }
 </style>

@@ -10,7 +10,8 @@
     </div>
 
     <div>
-      <v-btn @click="signinModalShow = true">Giriş Yap
+      <v-btn @click="signinModalShow = true"> 
+        <button >Giriş Yap</button>
       </v-btn>
       <Teleport to="body">
       <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
@@ -75,8 +76,7 @@ export default defineComponent({
     const signupCustomerShow = ref(false);
     const frame18Show = ref(false);
     const frame17Show = ref(false);
-    const frame21Show = ref(false);
-    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show, frame21Show};
+    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show};
   },
     
 });
