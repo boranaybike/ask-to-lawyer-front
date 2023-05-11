@@ -63,7 +63,7 @@
     display:unset!important;
   }
   .mx-auto{
-    border-radius: 10%;
+    border-radius: 30px;
   }
 
   .question-state {
