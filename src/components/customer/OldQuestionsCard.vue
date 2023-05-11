@@ -58,7 +58,7 @@
     justify-content: flex-end;
 }
   .mx-auto{
-    border-radius: 10%;
+    border-radius: 20px;
     position: relative;
     overflow: visible;
   }
