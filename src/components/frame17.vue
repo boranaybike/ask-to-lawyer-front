@@ -10,7 +10,7 @@
           frame 17
         </v-btn>
       </template>
-      <v-card style="position: relative; width: 760px; height: 231px; background: #E7ECEF!important; border-radius: 20px;">
+      <v-card style="position: relative; width: 560px; height: 201px; background: #E7ECEF!important; border-radius: 20px;">
 
         <v-card-title style="position: relative; text-align: center; font-size: 32px; line-height: 39px; font-family: 'Inter';">
           Teklifi onaylıyor musunuz?
