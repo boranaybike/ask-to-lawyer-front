@@ -1,6 +1,6 @@
 <template>
   <div class="customer-offers">
-    <p>this is a customer-offers page for customer</p>
+    <OffersCard/>
   </div>
 </template>
   
@@ -8,9 +8,10 @@
   
 <script lang="ts">
 import { defineComponent } from 'vue';
+import OffersCard from '@/components/customer/OffersCard.vue'
 
 export default defineComponent({
   name: 'CustomerOffersView',
-  components: {  },
+  components: { OffersCard},
 });
 </script>
