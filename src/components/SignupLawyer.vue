@@ -62,13 +62,14 @@ import { ref, onMounted } from 'vue';
     <div v-if="show" class="modal-mask">
       <div class="modalContainer">
         <v-form v-model="valid">
-        <button style="float: right; color: white;"
+        <button
               @click="$emit('close')"
-            >X</button>
+            ><v-icon icon="mdi-close"></v-icon></button>
             
         <div class="modalHeader">   
           <h3>Avukat Olarak Kayıt Ol</h3>
         </div>
+        
         <v-text-field
           v-model="name"
           :rules="nameRules"
@@ -86,21 +87,22 @@ import { ref, onMounted } from 'vue';
           bg-color="white"
           ></v-text-field>
 
-          <v-text-field rounded
-                        v-model="baro"
-                        :rules="barNoRules"
-                        label="Baro No"
-                        required
-                        bg-color="white"
-                    ></v-text-field>
+          <v-text-field 
+            rounded
+            v-model="baro"
+            :rules="barNoRules"
+            label="Baro No"
+            required
+            bg-color="white"
+          ></v-text-field>
 
         <v-text-field
-                        v-model="phone"
-                        :rules="phoneRules"
-                        label="Telefon numarası"
-                        required
-                        bg-color="white"
-                    ></v-text-field>
+            v-model="phone"
+            :rules="phoneRules"
+            label="Telefon numarası"
+            required
+            bg-color="white"
+         ></v-text-field>
 
         <v-text-field
           v-model="password1"

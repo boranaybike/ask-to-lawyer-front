@@ -18,7 +18,7 @@
             Ödeme Sayfasına Yönlendiriliyorsunuz...
           </v-card-text>
           <v-card-actions>
-            <v-btn @click="dialog = false">X</v-btn>
+            <v-btn @click="dialog = false"><v-icon icon="mdi-close"></v-icon></v-btn>
           </v-card-actions>
         </v-card>
       </v-dialog>
@@ -45,7 +45,7 @@ export default {
     font-family: 'Inter';
     font-style: normal;
     font-weight: 400;
-    font-size: 20px;
+    font-size: 50px;
     line-height: 24px;
 
     color: #000000;
