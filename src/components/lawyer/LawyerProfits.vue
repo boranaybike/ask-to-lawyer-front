@@ -1,4 +1,5 @@
 <template>
+  <div class="container">
     <v-table style="border-radius:20px; width: 800px; ">
       <thead>
         <tr>
@@ -25,6 +26,7 @@
         </tr>
       </tbody>
     </v-table>
+  </div>
   </template>
 
 <script>
@@ -64,18 +66,13 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 
 .v-table__wrapper{
     height: 350px;
     display: flex;
 }
 
-.v-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 .light{
     background: #E7ECEF;;
 }

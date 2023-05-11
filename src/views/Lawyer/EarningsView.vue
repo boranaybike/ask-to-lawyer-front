@@ -7,7 +7,7 @@
     
   <script lang="ts">
   import { defineComponent } from 'vue';
-  import LawyerProfits from '@/components/shared/LawyerProfits.vue';
+  import LawyerProfits from '@/components/lawyer/LawyerProfits.vue';
   
   
   export default defineComponent({

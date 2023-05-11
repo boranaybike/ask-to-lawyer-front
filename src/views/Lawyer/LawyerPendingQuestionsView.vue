@@ -1,15 +1,15 @@
 <template>
     <div class="lawyer-pending-questions">
-      <p>this is a pending questions page for lawyer</p>
+      <LawyerPendingQuestionCard/>
     </div>
 </template>
     
   <script lang="ts">
   import { defineComponent } from 'vue';
-  
+  import LawyerPendingQuestionCard from '@/components/lawyer/LawyerPendingQuestionCard.vue';
   export default defineComponent({
     name: 'LawyerPendingQuestionsView',
-    components: {  },
+    components: { LawyerPendingQuestionCard },
   });
   </script>
   

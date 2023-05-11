@@ -45,6 +45,11 @@ export default defineComponent({
   background-color: #000000cd;
 
 }
+.v-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 </style>
