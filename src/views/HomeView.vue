@@ -1,12 +1,15 @@
 <template>
   <div class="home">
     <QuestionPoolCards/>
+    <paymentSuccesful/>
+
     <div>
       <signupModal/>
       <frame18/>
       <frame17/>
       <frame21/>
       
+
     </div>
 
     <div>
@@ -55,6 +58,7 @@ import frame18 from '../components/frame18.vue'
 import frame17 from '../components/frame17.vue'
 import frame21 from '../components/frame21.vue'
 import QuestionPoolCards from '@/components/shared/QuestionPoolCards.vue';
+import paymentSuccesful from '@/components/paymentSuccessful.vue'
 
 export default defineComponent({
   name: 'HomeView',
@@ -67,7 +71,8 @@ export default defineComponent({
     frame18,
     frame17,
     frame21,
-    QuestionPoolCards
+    QuestionPoolCards,
+    paymentSuccesful,
 },
       setup() {
     const signinModalShow = ref(false);
@@ -76,7 +81,8 @@ export default defineComponent({
     const signupCustomerShow = ref(false);
     const frame18Show = ref(false);
     const frame17Show = ref(false);
-    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show};
+    const paymentSuccesfulShow = ref(false);
+    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show, paymentSuccesfulShow};
   },
     
 });
