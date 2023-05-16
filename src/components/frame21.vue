@@ -13,7 +13,7 @@
           </v-btn>
         </template>
   
-        <v-card style="position: relative; width: 596px; height: 186px; background: #E7ECEF; border-radius: 20px;">
+        <v-card style="position: relative; width: 400px; height: 186px; background: #E7ECEF; border-radius: 20px;">
           <v-card-text>
             Ödemeniz Hesabınıza Yatırılmıştır.
           </v-card-text>
@@ -42,7 +42,7 @@ export default {
     position: absolute;
     width: 376px;
     height: 24px;
-    left: 118px;
+    left: 20px;
     top: 81px;
     text-align: center;
 
@@ -59,6 +59,7 @@ export default {
     height: 30px;
     top: 9px;
     position: relative;
+    display: block;
 
 }
 </style>
