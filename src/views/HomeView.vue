@@ -22,10 +22,11 @@
     </div>
 
     <div>
-      <v-btn @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol
+      <v-btn @click="signupLawyerShow = true">
+        <button>Avukat Olarak Kayıt Ol</button>
       </v-btn>
       <Teleport to="body">
-      <signupLawyer :show="signupLawyerShow" @close="signupLawyerShow= false">
+      <signupLawyer v-if="signupLawyerShow" @close="signupLawyerShow= false">
 
       </signupLawyer>
     </Teleport>

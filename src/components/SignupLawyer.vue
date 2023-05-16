@@ -33,6 +33,7 @@ import { ref, onMounted } from 'vue';
   const password2Rules= ref([
         value => {
           if (password1.value != password2.value) return "Girilen şifreler eşleşmiyor."
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
           return true;
         }
       ]);
@@ -57,14 +58,17 @@ import { ref, onMounted } from 'vue';
 </script>
 
 <template>
+  
   <Transition name="lawyerModal">
 
-    <div v-if="show" class="modal-mask">
+    <div class="modal-mask">
       <div class="modalContainer">
         <v-form v-model="valid">
-        <button
+        <button class = "cls_btn"
               @click="$emit('close')"
-            ><v-icon icon="mdi-close"></v-icon></button>
+              ><v-icon icon="mdi-close"></v-icon>
+              
+        </button>
             
         <div class="modalHeader">   
           <h3>Avukat Olarak Kayıt Ol</h3>
@@ -108,12 +112,12 @@ import { ref, onMounted } from 'vue';
           v-model="password1"
           :rules="password1Rules"
           label="Şifre"
+          :type="show1 ? 'text' : 'password'"
           required
           bg-color="white"
-          :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
-          :type="show1 ? 'text' : 'password'"
-          @click:append="show1 = !show1"
-            counter
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          counter
+          @click:append-inner = "show1 = !show1"  
           ></v-text-field>
 
           <v-text-field
@@ -122,10 +126,11 @@ import { ref, onMounted } from 'vue';
             label="Şifre (tekrar)"
             required
             bg-color="white"            
-          :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
           :type="show2 ? 'text' : 'password'"
-          @click:append="show2 = !show2"
+          @click:append-inner="show2 = !show2"
             counter
+          :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+
             ></v-text-field>
             <v-btn rounded type="submit" block class="mt-2">Kayıt ol</v-btn> 
       </v-form>
@@ -179,4 +184,10 @@ import { ref, onMounted } from 'vue';
   color: #FFFFFF;
   padding-bottom: 5%;
 }
+
+.cls_btn{
+  margin-left: 435px;
+  color: white;
+}
+
 </style>
