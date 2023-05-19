@@ -17,7 +17,7 @@
         <button >Giriş Yap</button>
       </v-btn>
       <Teleport to="body">
-      <signinModal :show="signinModalShow" @close="signinModalShow = false"/>
+      <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
       </Teleport>
     </div>
 
@@ -36,7 +36,7 @@
     <v-btn @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
     </v-btn>
     <Teleport to="body">
-    <signupCustomer :show="signupCustomerShow" @close="signupCustomerShow = false">
+    <signupCustomer v-if="signupCustomerShow" @close="signupCustomerShow = false">
 
     </signupCustomer>
   </Teleport>
