@@ -1,113 +1,134 @@
 <script setup>
-const props = defineProps({
-  show: Boolean
-})
+import { ref, onMounted } from 'vue';
+
+  const show = ref(true);
+  const show1 = ref(false);
+  const show2 = ref(true);
+  const name = ref('');
+  const email = ref('');
+  const password1 = ref('');      
+  const password2 = ref('');    
+  const phone = ref('');
+
+  const nameRules= ref([
+        value => {
+          if (value?.length > 30) return "İsim 30 karakterden fazla olamaz"
+          if (value?.length < 5) return "İsim en az 5 karakterli olmalıdır."
+          return true;}
+      ]);
+
+
+      const password1Rules= ref([
+        value => {
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;}
+      ]);
+
+  const password2Rules= ref([
+        value => {
+          if (password1.value != password2.value) return "Girilen şifreler eşleşmiyor."
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;
+        }
+      ]);
+      const emailRules= ref([
+        value => {
+          if (/.+@.+\..+/.test(value)) return true;
+
+          return 'Lütfen geçerli bir e-posta adresi giriniz.'
+        },
+      ]);
+
+      const phoneRules= ref([
+      value => {
+        if (value?.length == 10) return true;
+
+        return 'Lütfen geçerli bir telefon numarası giriniz.'
+        },
+      ])
+
+      
+  
 </script>
 
 <template>
+  
   <Transition name="customerModal">
 
-  
-    <div v-if="show" class="modalmask">
-      <div class="modalcontainer">
-        <button style="float: right; color: white;"
+    <div class="modal-mask">
+      <div class="modalContainer">
+        <v-form v-model="valid">
+        <button class = "cls_btn"
               @click="$emit('close')"
-            >X</button>
-
-
-        <div class="modalheader">   
+              ><v-icon icon="mdi-close"></v-icon>
+              
+        </button>
+            
+        <div class="modalHeader">   
           <h3>Danışan Olarak Kayıt Ol</h3>
         </div>
+        
+        <v-text-field
+          v-model="name"
+          :rules="nameRules"
+          :counter="30"
+          label="İsim & Soyisim"
+          required
+          bg-color="white"
+        ></v-text-field>
 
-        <div class="nameSurname">
-            <label for="nameSurname" >İsim Soyisim</label>
-            <input type="nameSurname" id="nameSurname" v-model="nameSurname" required>
-        </div>
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          label="E-Posta"
+          required
+          bg-color="white"
+          ></v-text-field>
 
-        <div class="email">
-            <label for="email" >E-mail</label>
-            <input type="email" id="email" v-model="email" required>
-        </div>
 
-        <div class="telphone">
-            <label for="telphone" >Telefon</label>
-            <input type="telphone" id="telphone" v-model="telphone" required>
-        </div>        
+        <v-text-field
+            v-model="phone"
+            :rules="phoneRules"
+            label="Telefon numarası"
+            required
+            bg-color="white"
+         ></v-text-field>
 
-        <div class="password">
-            <label for="password" >Şifre</label>
-            <input type="password" id="password" v-model="password" required>
-        </div>
+        <v-text-field
+          v-model="password1"
+          :rules="password1Rules"
+          label="Şifre"
+          :type="show1 ? 'text' : 'password'"
+          required
+          bg-color="white"
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          counter
+          @click:append-inner = "show1 = !show1"  
+          ></v-text-field>
 
-        <div class="passwordagain">
-            <label for="password" >Şifre Tekrar</label>
-            <input type="password" id="password" v-model="password" required>
-        </div>
+          <v-text-field
+            v-model="password2"
+            :rules="password2Rules"
+            label="Şifre (tekrar)"
+            required
+            bg-color="white"            
+          :type="show2 ? 'text' : 'password'"
+          @click:append-inner="show2 = !show2"
+            counter
+          :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
 
-        <div class="modal-footer">
-          <slot name="footer">
-            <button
-              class="modal-default-button"
-              @click="$emit('close')"
-            >Kayıt Ol</button>
-          </slot>
-        </div>
+            ></v-text-field>
+            <v-btn rounded type="submit" block class="mt-2">Kayıt ol</v-btn> 
+      </v-form>
+
       </div>
     </div>
-
-
 
   </Transition>
 </template>
 
 <style lang="scss" scoped>
-
-#password{
-position: absolute;
-width: 409px;
-height: 37px;
-left: 3px;
-top: 40px;
-
-background: #FFFFFF;
-border-radius: 10px;
-}
-
-#nameSurname{
-position: absolute;
-width: 409px;
-height: 37px;
-left: 3px;
-top: 40px;
-
-background: #FFFFFF;
-border-radius: 10px;
-}
-
-#telphone{
-position: absolute;
-width: 409px;
-height: 37px;
-left: 3px;
-top: 40px;
-
-background: #FFFFFF;
-border-radius: 10px;
-}
-
-#email{
-position: absolute;
-width: 409px;
-height: 37px;
-left: 3px;
-top: 40px;
-
-background: #FFFFFF;
-border-radius: 10px;
-
-}
-
-.modalmask {
+.modal-mask {
   position: fixed;
   justify-content: center;
   align-items: center;
@@ -119,161 +140,41 @@ border-radius: 10px;
   display: flex;
   transition: opacity 0.3s ease;
 }
-
-.modalcontainer {
-position: relative;
-width: 513px;
-height: 709px;
-padding: 20px 30px;
-border-radius: 20px;
-background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/customer_signup.jpg);
-background-position: center;
-opacity: 0.99;
-box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-transition: all 0.3s ease;
-background-size: cover;
+.mt-2{
+    background-color:#EC4C0F;
+    color: white;
+    font-size:15px;
+    top: 50px;
+}
+.modalContainer {
+  position: relative;
+  width: 513px;
+  height: 90vh;
+  padding: 20px 30px;
+  border-radius: 20px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/customer_signup.jpg);
+  background-position: center;
+  opacity: 0.99;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
+  transition: all 0.3s ease;
+  background-size: cover;
 
 }
-
-.modalheader h3 {
-position: absolute;
-width: 358px;
-height: 34px;
-left: 109px;
-top: 48px;
-
-font-family: 'Inter';
-font-style: normal;
-font-weight: 700;
-font-size: 30px;
-line-height: 36px;
-display: flex;
-align-items: center;
-letter-spacing: -0.02em;
-
-color: #FFFFFF;
-
+.modalHeader h3 {
+  justify-content: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  padding-bottom: 5%;
 }
 
-.modal-footer{
-  margin-top: 490px;
-  margin-left: 115px;
+.cls_btn{
+  margin-left: 435px;
   color: white;
 }
-.nameSurname{
-  position: absolute;
-  width: 163px;
-  height: 36px;
-  left: 48px;
-  top: 133px;
 
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 22px;
-  line-height: 36px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-}
-.email {
-  position: absolute;
-  width: 84px;
-  height: 36px;
-  left: 48px;
-  top: 218px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 22px;
-  line-height: 36px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-}
-.telphone{
-  position: absolute;
-  width: 99px;
-  height: 36px;
-  left: 48px;
-  top: 306px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 22px;
-  line-height: 36px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-}
-.password {
-  position: absolute;
-  width: 61px;
-  height: 36px;
-  left: 48px;
-  top: 396px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 22px;
-  line-height: 36px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-
-}
-.passwordagain{
-  position: absolute;
-  width: 151px;
-  height: 36px;
-  left: 48px;
-  top: 484px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 200;
-  font-size: 22px;
-  line-height: 36px;
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-
-}
-.modal-default-button {
-  position: absolute;
-  width: 300px;
-  height: 55px;
-  left: 100px;
-  top: 611px;
-
-  background: #EC4C0F;
-  border-radius: 20px;
-}
-
-.modal-enter-from {
-  opacity: 0;
-}
-
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-from .modal-container,
-.modal-leave-to .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
 </style>

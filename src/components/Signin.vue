@@ -1,68 +1,96 @@
 <script setup>
-const props = defineProps({
-  show: Boolean
-})
+import { ref, onMounted } from 'vue';
+
+  const show = ref(true);
+  const show1 = ref(false);
+  const show2 = ref(true);
+  const email = ref('');
+  const password1 = ref('');       
+
+  const emailRules= ref([
+        value => {
+          if (/.+@.+\..+/.test(value)) return true;
+
+          return 'Lütfen geçerli bir e-posta adresi giriniz.'
+        },
+      ]);
+
+
+      const password1Rules= ref([
+        value => {
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;}
+      ]);
+      
+  
 </script>
 
 <template>
-  <Transition name="modal">
-
   
-    <div v-if="show" class="modal-mask">
-      <div class="modal-container">
-        <button style="float: right; color: white;"
+  <Transition name="signinModal">
+
+    <div class="modal-mask">
+      <div class="modalContainer">
+        <v-form v-model="valid">
+        <button class = "cls_btn"
               @click="$emit('close')"
-            >X</button>
-        <div class="modal-header">   
+              ><v-icon icon="mdi-close"></v-icon>
+              
+        </button>
+            
+        <div class="modalHeader">   
           <h3>Giriş Yap</h3>
         </div>
-        <div class="email">
-            <label for="email" style="margin-right: 335px; margin-bottom: 10px;">Email</label>
-            <input type="email" id="email" v-model="email" required>
-        </div>
+        
 
-        <div class="password">
-            <label for="password" style="margin-right: 335px; margin-bottom: 10px;">Şifre</label>
-            <input type="password" id="password" v-model="password" required>
-        </div>
-        <div class="modal-footer">
+        <v-text-field
+          v-model="email"
+          :rules="emailRules"
+          label="E-Posta"
+          required
+          bg-color="white"
+          ></v-text-field>
+
+
+        <v-text-field
+          v-model="password1"
+          :rules="password1Rules"
+          label="Şifre"
+          :type="show1 ? 'text' : 'password'"
+          required
+          bg-color="white"
+          :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+          counter
+          @click:append-inner = "show1 = !show1"  
+          ></v-text-field>
+
+
+      </v-form>
+      <v-btn rounded type="submit" block class="mt-2">Giriş Yap</v-btn> 
+
+      <div class="modal-footer">
           <slot name="footer">
             Şifreni mi unuttun?
-            <button
-              class="modal-default-button"
-              @click="$emit('close')"
-            >Giriş Yap</button>
           </slot>
         </div>
+       
       </div>
     </div>
-
-
 
   </Transition>
 </template>
 
 <style lang="scss" scoped>
-
-#password{
-  border: 1px solid #d5d5d5;
-  width: 380px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 8px;
+.modal-footer{
+  padding: 80px;
+  display: flex;
+  justify-content: center;
+  color: white;
 }
-
-#email{
-  border: 1px solid #d5d5d5;
-  width: 380px;
-  border-radius: 10px;
-  background-color: white;
-  padding: 8px;
-
-}
-
 .modal-mask {
   position: fixed;
+  justify-content: center;
+  align-items: center;
   z-index: 9998;
   top: 0;
   left: 0;
@@ -71,113 +99,44 @@ const props = defineProps({
   display: flex;
   transition: opacity 0.3s ease;
 }
-
-.modal-container {
+.mt-2{
+    background-color:#EC4C0F;
+    color: white;
+    font-size:15px;
+    display: flex;
+    justify-content: center;
+   top: 50px;
+}
+.modalContainer {
   position: relative;
-  width: 444px;
-  height: 594px;
-  margin: auto;
+  width: 513px;
+  height: 90vh;
   padding: 20px 30px;
   border-radius: 20px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/signin.jpg);
+  background-position: center;
+  opacity: 0.99;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
   transition: all 0.3s ease;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/signin.jpg);
   background-size: cover;
-  background-position: center;
+
 }
-
-h3 {
-  position: absolute;
-  width: 206px;
-  height: 51px;
-  left: 108px;
-  top: 64px;
-
+.modalHeader h3 {
+  justify-content: center;
   font-family: 'Inter';
   font-style: normal;
   font-weight: 700;
-  font-size: 36px;
-  line-height: 44px;
-  text-align: center;
-
+  font-size: 34px;
+  display: flex;
+  align-items: center;
   color: #FFFFFF;
-
+  padding-bottom: 25%;
+  padding-top: 5%;
 }
 
-.modal-footer{
-  margin-top: 490px;
-  margin-left: 115px;
+.cls_btn{
+  margin-left: 435px;
   color: white;
 }
 
-.email {
-  position: absolute;
-  width: 51px;
-  height: 29px;
-  left: 195px;
-  top: 140px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-  /* identical to box height */
-
-
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-  flex-direction: column;
-}
-
-.password {
-  position: absolute;
-  width: 51px;
-  height: 29px;
-  left: 195px;
-  top: 270px;
-
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 29px;
-
-  display: flex;
-  align-items: center;
-  letter-spacing: -0.02em;
-
-  color: #FFFFFF;
-
-  flex-direction: column;
-  
-}
-
-.modal-default-button {
-  position: absolute;
-  width: 229px;
-  height: 45px;
-  left: 97px;
-  top: 424px;
-
-  background: #EC4C0F;
-  border-radius: 20px;
-}
-
-.modal-enter-from {
-  opacity: 0;
-}
-
-.modal-leave-to {
-  opacity: 0;
-}
-
-.modal-enter-from .modal-container,
-.modal-leave-to .modal-container {
-  -webkit-transform: scale(1.1);
-  transform: scale(1.1);
-}
 </style>
