@@ -6,7 +6,7 @@
     >
       
 
-    <img width="170" style="margin-bottom: 15px; margin-left: 30px;" src="@/assets/images/libraa.png" />  
+ <router-link style="text-decoration: none;" to="/"> <img width="170" style="margin-bottom: 15px; margin-left: 30px;" src="@/assets/images/libraa.png" />  </router-link>
 
       <v-spacer></v-spacer>
     <div class="mr-5">

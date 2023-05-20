@@ -31,6 +31,10 @@
       </signupLawyer>
     </Teleport>
     </div>
+    <div>
+      
+     <Comment/>
+    </div>
 
   <div>
     <v-btn @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
@@ -60,6 +64,7 @@ import frame17 from '../components/frame17.vue'
 import frame21 from '../components/frame21.vue'
 import QuestionPoolCards from '@/components/shared/QuestionPoolCards.vue';
 import paymentSuccesful from '@/components/paymentSuccessful.vue'
+import Comment from '@/components/shared/Comment.vue';
 
 export default defineComponent({
   name: 'HomeView',
@@ -74,6 +79,7 @@ export default defineComponent({
     frame21,
     QuestionPoolCards,
     paymentSuccesful,
+    Comment,
 },
       setup() {
     const signinModalShow = ref(false);
@@ -83,7 +89,8 @@ export default defineComponent({
     const frame18Show = ref(false);
     const frame17Show = ref(false);
     const paymentSuccesfulShow = ref(false);
-    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show, paymentSuccesfulShow};
+   
+    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show, paymentSuccesfulShow,  };
   },
     
 });
