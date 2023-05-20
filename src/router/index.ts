@@ -55,7 +55,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'lawyerEarnings',
     component: () => import("../views/Lawyer/EarningsView.vue")
   },
-  
+  {
+    path: '/homepage',
+    name: 'homePage',
+    component: () => import("../views/HomePage.vue")
+  },
 ]
 
 const router = createRouter({
