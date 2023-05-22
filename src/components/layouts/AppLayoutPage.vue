@@ -3,12 +3,14 @@
     <v-layout>
       
       <v-main style="height:%100">
-      <div v-if="lawyer">  
+      <div v-if="login">
+        <div v-if="lawyer">
             <LawyerNavigationDrawer/>
           </div>
           <div v-else>  
             <CustomerNavigationDrawer/>
           </div>
+        </div>
         <v-container
           style="min-height: 100%;"
         >
@@ -28,8 +30,9 @@ import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.v
 export default defineComponent({
   setup() {
     const lawyer = false;
+    const login = false;
 
-    return {lawyer};
+    return {lawyer, login};
   },
   components: { 
     CustomerNavigationDrawer,
