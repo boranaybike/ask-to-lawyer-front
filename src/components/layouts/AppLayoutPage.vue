@@ -1,9 +1,9 @@
 <template>          
   <v-card>
-    <v-layout>
+    <v-layout :class="{'layout1': !showSidebar , 'layout2': showSidebar}">
       
-      <v-main style="height:%100; width:%100;">
-      <div v-if="login">
+      <v-main style="height:%100">
+      <div v-if="showSidebar">
         <div v-if="lawyer">
             <LawyerNavigationDrawer/>
           </div>
@@ -15,42 +15,43 @@
           style="min-height: 100%;"
         >
         <slot />
-        </v-container> 
+        </v-container>
       </v-main>
     </v-layout>
   </v-card>    
   
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
 import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.vue"
-
-export default defineComponent({
-  setup() {
-    const lawyer = false;
-    const login = false;
-
-    return {lawyer, login};
-  },
-  components: { 
-    CustomerNavigationDrawer,
-    LawyerNavigationDrawer, },
-});
+import { useRoute } from "vue-router";
+import { ref, computed} from 'vue';
+    const lawyer = ref(false);
+    const route = useRoute();
+    const showSidebar = computed(() => {
+    return route.path == '/anasayfa' ? false : true;
+})
 </script>
 
 <style scoped>
-
-.v-layout{
-  background-color: #000000;
+.v-main{
   display: flex;
-  
-  align-items: center;
-  justify-content: center;
-
+}
+.layout1{
+  background-color: #000000cd;
+  background-image: url("@/assets/images/anabg.jpg");
+  background-size: cover;
 }
 
+.layout2{
+  background-color: #000000cd;
+}
+.v-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 
 </style>
