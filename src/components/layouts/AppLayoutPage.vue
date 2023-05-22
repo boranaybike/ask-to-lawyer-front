@@ -2,7 +2,7 @@
   <v-card>
     <v-layout>
       
-      <v-main style="height:%100">
+      <!-- <v-main style="height:%100; width:%100;"> -->
       <div v-if="login">
         <div v-if="lawyer">
             <LawyerNavigationDrawer/>
@@ -11,12 +11,12 @@
             <CustomerNavigationDrawer/>
           </div>
         </div>
-        <v-container
+        <!-- <v-container
           style="min-height: 100%;"
-        >
+        > -->
         <slot />
-        </v-container>
-      </v-main>
+        <!-- </v-container> -->
+      <!-- </v-main> -->
     </v-layout>
   </v-card>    
   
@@ -41,18 +41,16 @@ export default defineComponent({
 </script>
 
 <style scoped>
-.v-main{
-  display: flex;
-}
-.v-layout{
-  background-color: #000000cd;
 
-}
-.v-container{
+.v-layout{
+  background-color: #000000;
   display: flex;
+  
   align-items: center;
   justify-content: center;
+
 }
+
 
 
 </style>
