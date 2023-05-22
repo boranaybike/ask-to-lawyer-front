@@ -10,7 +10,7 @@
     </div>
     <div class="chatbox-input">
       <v-text-field v-model="newMessage" placeholder="Mesajınızı girin" style="background-color: aliceblue;"></v-text-field>
-      <v-btn color="#ec4e0f81" @click="sendMessage">Gönder</v-btn>
+      <v-btn color="#ec4e0f81">Gönder</v-btn>
     </div>
   </div>
 </template>
@@ -29,14 +29,14 @@ export default {
       newMessage: ''
     };
   },
-  methods: {
-    sendMessage() {
-      if (this.newMessage) {
-        this.messages.push({ id: Date.now(), text: this.newMessage, sent: true });
-        this.newMessage = '';
-      }
-    }
-  }
+  // methods: {
+  //   sendMessage() {
+  //     if (this.newMessage) {
+  //       this.messages.push({ id: Date.now(), text: this.newMessage, sent: true });
+  //       this.newMessage = '';
+  //     }
+  //   }
+  // }
 };
 </script>
 
