@@ -1,6 +1,6 @@
 <template>
     <div class="anasayfa" >
-        
+        <v-main >
         <v-container>
     <v-row>
       <v-col cols="8">
@@ -31,7 +31,7 @@
         <div>
             <v-select variant="solo"
         model="select"
-        :items="items"
+        
         :rules="[v => !!v || 'Item is required']"
         label="Item"
         required
@@ -60,7 +60,7 @@
     
     </v-col>
     </v-row>
-  </v-container>
+  </v-container></v-main>
 
     </div>
 </template>
