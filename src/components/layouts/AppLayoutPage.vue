@@ -3,7 +3,7 @@
     <v-layout>
       
       <v-main style="height:%100">
-      <div v-if="login">
+      <div v-if="showSidebar">
         <div v-if="lawyer">
             <LawyerNavigationDrawer/>
           </div>
@@ -22,22 +22,17 @@
   
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
+<script setup lang="ts">
 import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
 import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.vue"
+import { useRoute } from "vue-router";
+import { ref, computed} from 'vue';
+    const lawyer = ref(false);
+    const route = useRoute();
+    const showSidebar = computed(() => {
+    return route.path == '/' ? false : true;
+})
 
-export default defineComponent({
-  setup() {
-    const lawyer = false;
-    const login = false;
-
-    return {lawyer, login};
-  },
-  components: { 
-    CustomerNavigationDrawer,
-    LawyerNavigationDrawer, },
-});
 </script>
 
 <style scoped>
