@@ -1,7 +1,7 @@
 <template>
     
       
-  <v-footer class="bg-black " style="margin: -16px;">
+  <v-footer class="footer " style="margin: -16px; background-color: rgba(0, 0, 0, 0.863);">
 <v-row  ><v-col class="text-left mt-10" cols="3"> <div class="ml-4" style="color:#ff6006"> <p>Şirketimiz</p> </div><br>
 <v-btn
   v-for="link in links"

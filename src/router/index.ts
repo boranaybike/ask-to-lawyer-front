@@ -60,6 +60,13 @@ const routes: Array<RouteRecordRaw> = [
     name: 'homePage',
     component: () => import("../views/HomePage.vue")
   },
+  {
+    path: '/anasayfa',
+    name: 'anasayfa',
+    component: () => import("../views/AnasayfaView.vue")
+  },
+
+
 ]
 
 const router = createRouter({
