@@ -70,7 +70,16 @@ const routes: Array<RouteRecordRaw> = [
     name: 'service',
     component: () => import("../views/serviceView.vue")
   },
-
+  {
+    path: '/lawyers',
+    name: 'lawyers',
+    component: () => import("../views/LawyersView.vue")
+  },
+  {
+    path: '/questions',
+    name: 'questions',
+    component: () => import("../views/Lawyer/QuestionsView.vue")
+  },
 
 ]
 
