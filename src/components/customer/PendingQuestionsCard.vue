@@ -10,7 +10,7 @@
       <v-card-text class="py-0">
         <v-row align="center" no-gutters>
             <v-col cols="12">
-                <p style="color:black; font-size:12px!important;">"{{description}}"</p>
+                <p style="color:black; font-size:12px!important;">"{{questions.description}}"</p>
             </v-col>  
         </v-row>
       </v-card-text>
@@ -33,8 +33,9 @@
   </template>
   
   <script>
-  import { defineComponent } from 'vue';
-  import { ref } from 'vue';
+  import { defineComponent, ref } from 'vue'
+  import axiosInstance from '@/services/Service.service'
+
   
   export default defineComponent({
     name: 'HomeView',
@@ -51,8 +52,20 @@
           date.value = new Date().toLocaleDateString('tr-TR', options);
         }, 1000);
 
-        
-      return { date, description, lawyerName,price };
+        const questions = ref([]);
+        const fetchQuestions = async () => {
+          try {
+            const response = await axiosInstance.get('/Questions/GetById/3'); 
+            questions.value = response.data;
+          } catch (error) {
+            console.log(error);
+          }
+        };
+
+
+        fetchQuestions();
+
+      return { date, description, lawyerName,price,questions };
           },
   });
   </script>
