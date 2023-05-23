@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    <QuestionPoolCards/>
     <paymentSuccesful/>
 
     <div>
@@ -8,7 +7,7 @@
       <frame18/>
       <frame17/>
       <frame21/>
-      
+      <teklifVer/>
 
     </div>
 
@@ -62,9 +61,9 @@ import profile from '../components/shared/LawyerProfileEdit.vue'
 import frame18 from '../components/frame18.vue'
 import frame17 from '../components/frame17.vue'
 import frame21 from '../components/frame21.vue'
-import QuestionPoolCards from '@/components/shared/QuestionPoolCards.vue';
 import paymentSuccesful from '@/components/paymentSuccessful.vue'
 import Comment from '@/components/shared/Comment.vue';
+import teklifVer from '@/components/lawyer/teklifVer.vue'
 
 export default defineComponent({
   name: 'HomeView',
@@ -77,9 +76,9 @@ export default defineComponent({
     frame18,
     frame17,
     frame21,
-    QuestionPoolCards,
     paymentSuccesful,
     Comment,
+    teklifVer,
 },
       setup() {
     const signinModalShow = ref(false);
