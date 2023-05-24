@@ -6,8 +6,8 @@
       width="auto"
     >
       <template v-slot:activator="{ props }">
-        <v-btn v-bind="props">
-          frame 17
+        <v-btn v-bind="props" color="#EC4C0F" rounded type="submit"   style="width: 375px; color:white; font-size:10px;">
+          Teklifi Kabul Et
         </v-btn>
       </template>
       <v-card style="position: relative; width: 560px; height: 201px; background: #E7ECEF!important; border-radius: 20px;">
@@ -74,5 +74,11 @@ text-align: center;
 align-items: center;
 padding: 8%;
 }
+.v-btn {
+   
+   color:white;
+   font-size:10px;
+  
+ }
 
 </style>
