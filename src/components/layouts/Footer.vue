@@ -1,8 +1,8 @@
 <template>
     
       
-  <v-footer class="footer " style="margin: -16px; background-color: rgba(0, 0, 0, 0.863);">
-<v-row  ><v-col class="text-left mt-10" cols="3"> <div class="ml-4" style="color:#ff6006"> <p>Şirketimiz</p> </div><br>
+<v-footer class="footer " style="margin: -16px; background-color: rgba(0, 0, 0, 0.863);">
+<v-row  ><v-col class="text-left mt-5" cols="3"> <div class="ml-4" style="color:#ff6006"> <p>Şirketimiz</p> </div><br>
 <v-btn
   v-for="link in links"
   :key="link"
@@ -13,7 +13,7 @@
   style="font-size: 60%; padding-right: 100px;"
 >
   {{ link }}
-</v-btn></v-col><v-col class="text-left mt-10" cols="3"><div class="ml-4"  style="color:#ff6006" > <p>Kaynaklar</p> </div><br>
+</v-btn></v-col><v-col class="text-left mt-5" cols="3"><div class="ml-4"  style="color:#ff6006" > <p>Kaynaklar</p> </div><br>
 <v-btn
   v-for="link in links1"
   :key="link"
@@ -25,7 +25,7 @@
 >
   {{ link }}
 </v-btn></v-col>
-<v-col class="text-left mt-10" cols="3"> <div class="ml-4" style="color:#ff6006"> <p>Katıl</p> </div><br>
+<v-col class="text-left mt-5" cols="3"> <div class="ml-4" style="color:#ff6006"> <p>Katıl</p> </div><br>
 <v-btn
   v-for="link in links2"
   :key="link"
@@ -37,7 +37,7 @@
 >
   {{ link }}
 </v-btn></v-col>
-<v-col class="text-left mt-10" cols="3">
+<v-col class="text-left mt-5" cols="3">
   <v-card max-width="344" style="background-color: transparent;">
 <v-card-item>
 <div>
@@ -111,10 +111,11 @@ links2: [
 <style scoped>
 .v-footer {
 position: sticky;
+align-items: start;
+}
 
-
-
-
+.v-row{
+  margin: 0 !important; 
 }
 
 </style>
