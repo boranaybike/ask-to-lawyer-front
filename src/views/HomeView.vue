@@ -7,7 +7,7 @@
       <frame18/>
       <frame17/>
       <frame21/>
-      <teklifVer/>
+      
 
     </div>
 
@@ -63,7 +63,7 @@ import frame17 from '../components/frame17.vue'
 import frame21 from '../components/frame21.vue'
 import paymentSuccesful from '@/components/paymentSuccessful.vue'
 import Comment from '@/components/shared/Comment.vue';
-import teklifVer from '@/components/lawyer/teklifVer.vue'
+
 
 export default defineComponent({
   name: 'HomeView',
@@ -78,7 +78,7 @@ export default defineComponent({
     frame21,
     paymentSuccesful,
     Comment,
-    teklifVer,
+    
 },
       setup() {
     const signinModalShow = ref(false);
