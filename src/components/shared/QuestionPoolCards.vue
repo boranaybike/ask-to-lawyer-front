@@ -35,17 +35,22 @@
       </v-card-item>
   
       <v-card-actions>
-        <v-btn color="white" rounded >
-        Teklif Ver
-      </v-btn>
-
+      
+      <teklifVer/>
       </v-card-actions>
     </v-card>
   </template>
 
 
 <script>
-  export default {}
+import { defineComponent } from 'vue';
+import teklifVer from '@/components/lawyer/teklifVer.vue'
+  
+  
+  export default defineComponent({
+    name: 'QuestionPoolCards',
+    components: { teklifVer },
+  });
 </script>
 
 <style lang="scss" scoped>
