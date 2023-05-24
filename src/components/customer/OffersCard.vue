@@ -66,19 +66,19 @@
   
       
   
-      
-        <v-btn color="#EC4C0F" rounded type="submit" block class="mt-2"  style=" color:white; font-size:10px;"> Teklifi Kabul et </v-btn>
-    
+      <frame17/>
+        
     </v-card>
   </template>
   <script>
   import { defineComponent } from 'vue';
   import { ref } from 'vue';
+  import frame17 from '@/components/frame17.vue';
   
     export default defineComponent({
 
-        name: 'HomeView',
-         components: {},
+        name: 'CustomerOffersView',
+         components: { frame17 },
          setup() {
         const question = ref("Yolda Giderken adam bana yan baktı ve ben de çekip vurdum kaç yıl yatarım");
         const lawyerName=ref("Rick Grimes");
@@ -86,7 +86,8 @@
         const baro = ref("Antalya Barosu")
         const category = ref("Ceza Hukuku")
         const rate = ref(3.5)
-      
+        const frame17Show = ref(false);
+
   const options = { year: 'numeric', month: 'long', day: 'numeric' };
   const date = ref(new Date().toLocaleDateString('tr-TR', options));
 
@@ -95,7 +96,7 @@
   }, 1000);
 
   
-      return { date, question, lawyerName,price, baro , category, rate };
+      return { date, question, lawyerName,price, baro , category, rate ,frame17Show};
     },
   
       

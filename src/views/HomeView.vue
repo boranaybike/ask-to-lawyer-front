@@ -5,7 +5,6 @@
     <div>
       <signupModal/>
       <frame18/>
-      <frame17/>
       <frame21/>
       
 
@@ -59,7 +58,6 @@ import signupLawyer from '../components/SignupLawyer.vue'
 import signupCustomer from '../components/SignupCustomer.vue'
 import profile from '../components/shared/LawyerProfileEdit.vue'
 import frame18 from '../components/frame18.vue'
-import frame17 from '../components/frame17.vue'
 import frame21 from '../components/frame21.vue'
 import paymentSuccesful from '@/components/paymentSuccessful.vue'
 import Comment from '@/components/shared/Comment.vue';
@@ -74,7 +72,6 @@ export default defineComponent({
     signupCustomer,
     profile,
     frame18,
-    frame17,
     frame21,
     paymentSuccesful,
     Comment,
@@ -86,10 +83,9 @@ export default defineComponent({
     const signupLawyerShow = ref(false);
     const signupCustomerShow = ref(false);
     const frame18Show = ref(false);
-    const frame17Show = ref(false);
     const paymentSuccesfulShow = ref(false);
    
-    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, frame17Show, paymentSuccesfulShow,  };
+    return { signinModalShow , signupModalShow , signupLawyerShow , signupCustomerShow, frame18Show, paymentSuccesfulShow,  };
   },
     
 });
