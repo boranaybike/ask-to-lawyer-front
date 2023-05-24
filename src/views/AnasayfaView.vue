@@ -28,8 +28,35 @@
               <div class="text-h6 mb-1" style="text-align: left; color: white;">
                 Sorunuz hangi hukuk alanına giriyor?
               </div>
-
-              <div class="text-caption" style="color: white;">Fiyat aralığı belileyin (isteğe Bağlı)</div>
+              <div>
+                
+      <v-select
+        model="select"  variant="solo"
+        
+        :rules="[v => !!v || 'Item is required']"
+       
+        required
+      ></v-select>
+              </div>
+              <v-row>
+    <v-col cols="6">
+      <div>
+        <div class="text" style="color: white;">Fiyat aralığı belileyin <br> (İsteğe Bağlı)</div>
+      </div>
+    </v-col>
+    <v-col cols="6">
+      <div>
+        <v-select
+        model="select"  variant="solo"
+        
+        :rules="[v => !!v || 'Item is required']"
+       
+        required
+      ></v-select>
+      </div>
+    </v-col>
+  </v-row>
+              
             </div>
           </v-card-item>
 
