@@ -6,7 +6,7 @@
 <v-btn
   v-for="link in links"
   :key="link"
-  color="orangered"
+  color="white"
   variant="text"
   
   rounded="xl"
