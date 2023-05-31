@@ -8,15 +8,14 @@
      </v-card-item>
     
     <v-card-item>
-        <v-card-title  padding-top="550px" text-align="center">{{ lawyerName }}</v-card-title>  
+        <v-card-title  padding-top="550px" text-align="center">{{ "Av. " + firstName + " " + lastName}}</v-card-title>  
       </v-card-item>
   
       <v-card-text>
         <v-row
           align="center"
-          class="mx-0"
-          
-        >
+          class="mx-0">
+
           <v-rating
             :model-value="rate"
             color="#EC4C0F"
@@ -24,57 +23,80 @@
             half-increments
             readonly
             size="small"
-            align="center"
-        
-            
+            align="center"   
           ></v-rating>
-          
-  
+            
         <div class="text-grey">
-            {{ rate }} 
+            {{ averageRate }} 
           </div>
         </v-row>
         
- 
         <div>
         <v-row>
         <v-card-subtitle align="center" >
-          <span class="my-4" style="margin-left: 20px;"  >{{ category }}</span>
-       
-          
+          <span class="my-4" style="margin-left: 20px;"  >{{ bio }}</span>
         </v-card-subtitle> </v-row></div>
    
-        <div class="my-4 text-subtitle" align="center" >
-           {{ baro  }}
+        <div class="my-4 text-subtitle" align="center">
+          <v-icon icon="mdi-scale-balance"></v-icon>
+           bano no: {{ baro }}
         </div>
       </v-card-text>    
     </v-card>
   </template>
+
+
   <script>
   import { defineComponent } from 'vue';
   import { ref } from 'vue';
   
     export default defineComponent({
 
-        name: 'LawyersView',
-         components: {},
+        name: 'LawyersCard',
+        props: {
+          firstName: {
+            type: String,
+            required: true
+          },
+          lastName: {
+            type: String,
+            required: true
+          },
+          baro: {
+            type: String,
+            required: true
+          },
+          bio: {
+            type: String,
+            required: true
+          },
+          rate: {
+            type: Number,
+            required: true
+          },
+          phone: {
+            type: String,
+            required: true
+          },
+          education: {
+            type: String,
+            required: true
+          },
+          averageRate: {
+            type: Number,
+            required: true
+          }
+  },
+    components: {},
          setup() {
-        const lawyerName=ref("Rick Grimes");
-        const baro = ref("Antalya Barosu")
-        const category = ref("Ceza Hukuku, Medeni Hukuk")
-        const rate = ref(3.5)
-
   
-      return { lawyerName, baro , category, rate };
+      return { };
     },
-  
-      
-      
      
     })
   </script>
   
-  <style scoped="scss">
+  <style scoped lang="scss">
 
   .mx-auto{
     border-radius: 5%;
@@ -88,7 +110,6 @@
 }
 .my-4 {
     margin-top: 36px !important;
-    /* margin-bottom: 50px; */
 }
 .v-card .v-card-title {
     line-height: 2rem;
@@ -96,19 +117,3 @@
 }
 
   </style>
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      

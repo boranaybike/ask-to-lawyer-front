@@ -55,7 +55,7 @@
         const questions = ref([]);
         const fetchQuestions = async () => {
           try {
-            const response = await axiosInstance.get('/Questions/GetById/3'); 
+            const response = await axiosInstance.post('/Questions/9'); 
             questions.value = response.data;
           } catch (error) {
             console.log(error);
