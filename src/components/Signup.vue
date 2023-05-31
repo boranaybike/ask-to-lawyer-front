@@ -22,7 +22,15 @@
                   gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                   height="200px"
                   cover>            
-                <v-card-title class="text-white">Avukat olarak<br> kayıt ol</v-card-title>
+                  <div>
+                  <v-btn @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol
+                  </v-btn>
+                  <Teleport to="body">
+                  <signupLawyer v-if="signupLawyerShow" @close="signupLawyerShow= false">
+
+                  </signupLawyer>
+                </Teleport>
+                </div>
                 </v-img>
               </v-card>
                   </v-col>
@@ -34,7 +42,14 @@
                           gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
                           height="200px"
                           cover>
-                      <v-card-title class="text-white">Danışan olarak <br/>kayıt ol</v-card-title>
+                        <div>
+                          <v-btn @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
+                          </v-btn>
+                          <Teleport to="body">
+                          <signupCustomer v-if="signupCustomerShow" @close="signupCustomerShow = false">
+                          </signupCustomer>
+                          </Teleport>
+                        </div>
                       </v-img>
               </v-card>
             </v-col>
@@ -47,9 +62,22 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
+import { ref } from 'vue';
+import signupCustomer from '../components/SignupCustomer.vue'
+import signupLawyer from '../components/SignupLawyer.vue'
+
 export default {
     name: "Signup",
   components: {
+    signupCustomer,
+    signupLawyer,
+  },
+  setup() {
+    const signupCustomerShow = ref(false);
+    const signupLawyerShow = ref(false);
+
+    return{signupCustomerShow , signupLawyerShow ,};
   },
   data () {
     return {
