@@ -23,7 +23,7 @@
                   height="200px"
                   cover>            
                   <div>
-                  <v-btn @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol
+                  <v-btn style="background-color: gray;" @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol
                   </v-btn>
                   <Teleport to="body">
                   <signupLawyer v-if="signupLawyerShow" @close="signupLawyerShow= false">
@@ -43,7 +43,7 @@
                           height="200px"
                           cover>
                         <div>
-                          <v-btn @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
+                          <v-btn style="background-color: gray;" @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
                           </v-btn>
                           <Teleport to="body">
                           <signupCustomer v-if="signupCustomerShow" @close="signupCustomerShow = false">
@@ -54,7 +54,10 @@
               </v-card>
             </v-col>
           </v-row>
-          <p>Üyeliğiniz var mı? <a href="" style="color:#EC4C0F;">giriş yapın.</a></p>
+          <p>Üyeliğiniz var mı? <button href="" style="color:#EC4C0F;" @click="signinModalShow = true">giriş yapın.</button></p>
+          <Teleport to="body">
+      <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
+      </Teleport>
         </v-container>
       </v-card>
     </v-dialog>
@@ -64,20 +67,24 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import { ref } from 'vue';
-import signupCustomer from '../components/SignupCustomer.vue'
-import signupLawyer from '../components/SignupLawyer.vue'
+import signupCustomer from '../components/SignupCustomer.vue';
+import signupLawyer from '../components/SignupLawyer.vue';
+import signinModal from '../components/Signin.vue';
+
 
 export default {
     name: "Signup",
   components: {
     signupCustomer,
     signupLawyer,
+    signinModal,
   },
   setup() {
     const signupCustomerShow = ref(false);
     const signupLawyerShow = ref(false);
+    const signinModalShow = ref(false);
 
-    return{signupCustomerShow , signupLawyerShow ,};
+    return{signupCustomerShow , signupLawyerShow , signinModalShow};
   },
   data () {
     return {
