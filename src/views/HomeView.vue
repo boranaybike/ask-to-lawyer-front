@@ -11,9 +11,7 @@
     </div>
 
     <div>
-      <v-btn @click="signinModalShow = true"> 
-        <button >Giriş Yap</button>
-      </v-btn>
+      <v-btn @click="signinModalShow = true">Giriş Yap</v-btn>
       <Teleport to="body">
       <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
       </Teleport>
@@ -51,8 +49,6 @@ export default defineComponent({
   components: {
     signinModal,
     signupModal,
-    
-    
     profile,
     frame18,
     frame21,
