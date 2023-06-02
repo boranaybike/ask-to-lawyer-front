@@ -47,21 +47,34 @@
                     </v-col>
                     
                     <v-col cols="12" md="6">
-                    <v-text-field
+                    <v-select
                         v-model="baro"
                         label="Baro"
                         required
                         bg-color="white"
-                    ></v-text-field>
+                        :items="['Adana Barosu','Adıyaman Barosu','Afyonkarahisar Barosu','Ağrı Barosu','Aksaray Barosu',
+                        'Amasya Barosu','Ankara Barosu','Ankara 2 Nolu Barosu','Antalya Barosu','Ardahan Barosu','Artvin Barosu',
+                        'Aydın Barosu','Balıkesir Barosu','Bartın Barosu','Batman Barosu','Bayburt Barosu','Bilecik Barosu','Bingöl Barosu',
+                        'Bitlis Barosu','Bolu Barosu','Burdur Barosu','Bursa Barosu','Çanakkale Barosu','Çankırı Barosu','Çorum Barosu',
+                        'Denizli Barosu','Diyarbakır Barosu','Düzce Barosu','Edirne Barosu','Elazığ Barosu','Erzincan Barosu','Erzurum Barosu',
+                        'Eskişehir Barosu','Gaziantep Barosu','Giresun Barosu','Gümüşhane-Bayburt Barosu','Gümüşhane Barosu','Hakkari Barosu',
+                        'Hatay Barosu','Iğdır Barosu','Isparta Barosu','İstanbul Barosu','İstanbul 2 Nolu Barosu','İzmir Barosu','Kahramanmaraş Barosu',
+                        'Karabük Barosu','Karaman Barosu','Kars Barosu','Kastamonu Barosu','Kayseri Barosu','Kırıkkale Barosu','Kırklareli Barosu',
+                        'Kırşehir Barosu','Kilis Barosu','Kocaeli Barosu','Konya Barosu','Kütahya Barosu','Malatya Barosu','Manisa Barosu','Mardin Barosu',
+                        'Mersin Barosu','Muğla Barosu','Muş Barosu','Nevşehir Barosu','Niğde Barosu','Ordu Barosu','Osmaniye Barosu','Rize Barosu','Sakarya Barosu',
+                        'Samsun Barosu'	,'Siirt Barosu','Sinop Barosu','Sivas Barosu','Şanlıurfa Barosu','Şırnak Barosu','Tekirdağ Barosu','Tokat Barosu',
+                        'Trabzon Barosu','Tunceli Barosu','Uşak Barosu','Van Barosu','Yalova Barosu','Yozgat Barosu','Zonguldak Barosu']"
+                    ></v-select>
                     </v-col>
                     
                     <v-col cols="12" md="6">
-                    <v-text-field
+                    <v-select
                         v-model="area"
                         label="Uzmanlık Alanı"
                         required
                         bg-color="white"
-                    ></v-text-field>
+                        :items="['Aile Hukuku', 'Ceza Hukuku', 'İcra Hukuku', 'Miras Hukuku', 'İş Hukuku','Vergi Hukuku','Gümrük ve Lojistik Hukuku','Gayrimenkul Hukuku','Sigorta Hukuku','Bilişim Hukuku']"
+                    ></v-select>
                     </v-col>
 
                     <v-col cols="12" md="12">
@@ -77,18 +90,26 @@
                     <v-text-field
                         v-model="password1"
                         :rules="password1Rules"
-                        label="Şifre"
+                        label="Yeni Şifre"
+                        :type="show1 ? 'text' : 'password'"
                         required
                         bg-color="white"
+                        :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                        counter
+                        @click:append-inner = "show1 = !show1"  
                     ></v-text-field>
                             </v-col>
                             <v-col cols="12" md="6">
                             <v-text-field
                                 v-model="password2"
                                 :rules="password2Rules"
-                                label="Şifre (tekrar)"
+                                label="Yeni Şifre (tekrar)"
+                                :type="show2 ? 'text' : 'password'"
                                 required
                                 bg-color="white"
+                                :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                                counter
+                                @click:append-inner = "show2 = !show2"  
                             ></v-text-field>
                         </v-col>
                         <v-btn rounded type="submit" block class="mt-2">Submit</v-btn>
@@ -103,6 +124,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
   
+    const show1 = ref(false);
+    const show2= ref(false);
     const valid = ref(false);
     const baro = ref('Antalya');
     const area = ref('Ceza hukuku');
