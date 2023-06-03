@@ -52,8 +52,12 @@
                         v-model="password1"
                         :rules="password1Rules"
                         label="Yeni şifre"
+                        :type="show1 ? 'text' : 'password'"
                         required
                         bg-color="white"
+                        :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+                        counter
+                        @click:append-inner = "show1 = !show1"
                     ></v-text-field>
                             </v-col>
                             <v-col cols="12" md="6">
@@ -61,8 +65,12 @@
                                 v-model="password2"
                                 :rules="password2Rules"
                                 label="Yeni şifre (tekrar)"
+                                :type="show2 ? 'text' : 'password'"
                                 required
                                 bg-color="white"
+                                :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+                                counter
+                                @click:append-inner = "show2 = !show2"  
                             ></v-text-field>
                         </v-col>                
                         <v-btn rounded type="submit" block class="mt-2">Submit</v-btn>
@@ -77,6 +85,8 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
+      const show1 = ref(false);
+      const show2= ref(false);
       const valid= ref(false);
       const firstname = ref('Zeynep');
       const firstnameRules= ref([
