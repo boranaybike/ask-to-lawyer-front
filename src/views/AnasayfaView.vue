@@ -48,9 +48,7 @@
       <div>
         <v-select
         model="select"  variant="solo"
-        
-        :rules="[v => !!v || 'Item is required']"
-       
+        :rules="[v => !!v || 'Item is required']"   
         required
       ></v-select>
       </div>

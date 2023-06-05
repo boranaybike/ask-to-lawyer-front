@@ -1,8 +1,11 @@
-<template>          
+<template>              <Header/>
+      
   <v-card>
     <v-layout :class="{'layout1': !showSidebar , 'layout2': showSidebar}">
       
-      <v-main style="height:%100">
+      <v-main style="height:%100; padding-top: 75px;"
+          >
+        
       <div v-if="showSidebar">
         <div v-if="lawyer">
             <LawyerNavigationDrawer/>
@@ -25,12 +28,13 @@
 <script setup lang="ts">
 import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
 import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.vue"
+
 import { useRoute } from "vue-router";
 import { ref, computed} from 'vue';
     const lawyer = ref(false);
     const route = useRoute();
     const showSidebar = computed(() => {
-    return route.path == '/anasayfa' ? false : true;
+    return route.path == ('/anasayfa' || '/questions' || '/lawyers') ? false : true;
 })
 </script>
 

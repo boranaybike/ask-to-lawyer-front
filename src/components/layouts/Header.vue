@@ -1,33 +1,45 @@
 <template>
-  
-    <v-toolbar color="E7ECEF"
-      prominent
-      
-    >
       
 
- <router-link style="text-decoration: none;" to="/anasayfa"> <img width="170" style="margin-bottom: 15px; margin-left: 30px;" src="@/assets/images/libraa.png" />  </router-link>
+      <v-app-bar
+        color="transparent"
+      >
+        <template v-slot:prepend>
+          <router-link style="text-decoration: none;" to="/anasayfa"> <img width="170" style="margin-bottom: 15px; margin-left: 30px;" src="@/assets/images/libraa.png" />  </router-link>
+        </template>
 
-      <v-spacer></v-spacer>
-    <div class="mr-5">
-      <v-btn icon>
-        <v-icon>mdi-message</v-icon>
-      </v-btn>
+        <v-spacer></v-spacer>
 
-      <v-btn icon>
-        <v-icon>mdi-bell</v-icon>
-      </v-btn>
+      <signupModal/>
 
-      <v-btn icon style="background-color: rgba(0, 0, 0, 0.267);">
-        <v-icon >mdi-account</v-icon>
-      </v-btn></div>
-    </v-toolbar>
-  
+
+      <div>
+      <v-btn @click="signinModalShow = true">Giriş Yap</v-btn>
+      <Teleport to="body">
+      <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
+      </Teleport>
+    </div>
+</v-app-bar>
 </template>
 
 <script lang="ts">
-    export default{}
-      
+import { defineComponent } from 'vue';
+import { ref } from 'vue';
+import signinModal from '../Signin.vue'
+import signupModal from '../Signup.vue'
 
+export default defineComponent({
+  name: 'HomeView',
+  components: {
+    signinModal,
+    signupModal,
+},
+      setup() {
+    const signinModalShow = ref(false);
+    const signupModalShow = ref(false);
+   
+    return { signinModalShow , signupModalShow };
+  },
     
+});
 </script>

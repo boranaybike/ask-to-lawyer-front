@@ -1,14 +1,8 @@
 <template>
     <div class="application">  
       <v-app>
-        <v-toolbar>
           <Header/>
-        </v-toolbar>
 
-        
-        
-        
-        
         <AppLayout>
         <router-view>
           
@@ -30,14 +24,11 @@ import { defineComponent } from 'vue';
 
 import AppLayout from "@/components/layouts/AppLayoutPage.vue"
 import Footer from "@/components/layouts/Footer.vue"
-import Header from "@/components/layouts/Header.vue"
 
 export default defineComponent({
   components: {
     AppLayout,
-    Footer,
-    Header,
-    
+    Footer,  
   },
 
     setup(){

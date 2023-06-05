@@ -1,56 +1,3 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-
-  const show = ref(true);
-  const show1 = ref(false);
-  const show2 = ref(true);
-  const name = ref('');
-  const email = ref('');
-  const password1 = ref('');      
-  const password2 = ref('');    
-  const phone = ref('');
-
-  const nameRules= ref([
-        value => {
-          if (value?.length > 30) return "İsim 30 karakterden fazla olamaz"
-          if (value?.length < 5) return "İsim en az 5 karakterli olmalıdır."
-          return true;}
-      ]);
-
-
-      const password1Rules= ref([
-        value => {
-          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
-          return true;}
-      ]);
-
-  const password2Rules= ref([
-        value => {
-          if (password1.value != password2.value) return "Girilen şifreler eşleşmiyor."
-          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
-          return true;
-        }
-      ]);
-      const emailRules= ref([
-        value => {
-          if (/.+@.+\..+/.test(value)) return true;
-
-          return 'Lütfen geçerli bir e-posta adresi giriniz.'
-        },
-      ]);
-
-      const phoneRules= ref([
-      value => {
-        if (value?.length == 10) return true;
-
-        return 'Lütfen geçerli bir telefon numarası giriniz.'
-        },
-      ])
-
-      
-  
-</script>
-
 <template>
   
   <Transition name="customerModal">
@@ -69,10 +16,19 @@ import { ref, onMounted } from 'vue';
         </div>
         
         <v-text-field
-          v-model="name"
+          v-model="firstName"
           :rules="nameRules"
-          :counter="30"
-          label="İsim & Soyisim"
+          :counter="20"
+          label="İsim"
+          required
+          bg-color="white"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="lastName"
+          :rules="lastNameRules"
+          :counter="20"
+          label="Soyisim"
           required
           bg-color="white"
         ></v-text-field>
@@ -126,6 +82,89 @@ import { ref, onMounted } from 'vue';
 
   </Transition>
 </template>
+<script>
+import { defineComponent } from 'vue';
+import { ref, onMounted } from 'vue';
+import axiosInstance from '@/services/Service.service';
+
+export default defineComponent({
+  name: 'SignupCustomer',
+  components: {},
+  setup() {
+    const show = ref(true);
+    const show1 = ref(false);
+    const show2 = ref(true);
+    const firstName = ref('');
+    const lastName = ref('');
+    const email = ref('');
+    const password1 = ref('');
+    const password2 = ref('');
+    const phone = ref('');
+
+    const submitForm = async () => {
+      try {
+        const customer = {
+          firstName: firstName.value,
+          lastName: lastName.value,
+          email: email.value,
+          phone: phone.value,
+          password: password1.value,
+        }
+
+        const response = await axiosInstance.post('/Clients/Add', customer)
+        console.log(response.data) 
+        
+      } 
+      catch (error) {
+        console.log(error)
+      }
+    }
+
+    return {
+      nameRules: ref([
+        value => {
+          if (value?.length > 20) return "İsim 20 karakterden fazla olamaz"
+          if (value?.length <= 3) return "İsim en az 3 karakterli olmalıdır."
+          return true;
+        }
+      ]),
+      lastNameRules: ref([
+        value => {
+          if (value?.length > 20) return "Soyisim 20 karakterden fazla olamaz"
+          if (value?.length <= 2) return "İsim en az 2 karakterli olmalıdır."
+          return true;
+        }
+      ]),
+      password1Rules: ref([
+        value => {
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;
+        }
+      ]),
+      password2Rules: ref([
+        value => {
+          if (password1.value != password2.value) return "Girilen şifreler eşleşmiyor."
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;
+        }
+      ]),
+      emailRules: ref([
+        value => {
+          if (/.+@.+\..+/.test(value)) return true;
+          return 'Lütfen geçerli bir e-posta adresi giriniz.'
+        },
+      ]),
+      phoneRules: ref([
+        value => {
+          if (value?.length == 10) return true;
+          return 'Lütfen geçerli bir telefon numarası giriniz.'
+        },
+      ])
+    }
+  }
+});
+</script>
+
 
 <style lang="scss" scoped>
 .modal-mask {

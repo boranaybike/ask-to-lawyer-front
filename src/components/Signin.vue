@@ -1,30 +1,3 @@
-<script setup>
-import { ref, onMounted } from 'vue';
-
-  const show = ref(true);
-  const show1 = ref(false);
-  const show2 = ref(true);
-  const email = ref('');
-  const password1 = ref('');       
-
-  const emailRules= ref([
-        value => {
-          if (/.+@.+\..+/.test(value)) return true;
-
-          return 'Lütfen geçerli bir e-posta adresi giriniz.'
-        },
-      ]);
-
-
-      const password1Rules= ref([
-        value => {
-          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
-          return true;}
-      ]);
-      
-  
-</script>
-
 <template>
   
   <Transition name="signinModal">
@@ -79,6 +52,35 @@ import { ref, onMounted } from 'vue';
 
   </Transition>
 </template>
+
+<script setup>
+import { ref, onMounted } from 'vue';
+
+  const show = ref(true);
+  const show1 = ref(false);
+  const show2 = ref(true);
+  const email = ref('');
+  const password1 = ref('');       
+
+  const emailRules= ref([
+        value => {
+          if (/.+@.+\..+/.test(value)) return true;
+
+          return 'Lütfen geçerli bir e-posta adresi giriniz.'
+        },
+      ]);
+
+      const password1Rules= ref([
+        value => {
+          if (value?.length < 6) return "Şifreniz en az 6 karakterden oluşmalıdır"
+          return true;}
+      ]);
+      
+  
+</script>
+
+
+
 
 <style lang="scss" scoped>
 .modal-footer{
