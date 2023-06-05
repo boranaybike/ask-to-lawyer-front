@@ -1,17 +1,11 @@
 <template>
     <div class="application">  
       <v-app>
-        <v-toolbar>
           <Header/>
-        </v-toolbar>
 
-        
-        
-        
-        
         <AppLayout>
         <router-view>
-          
+
         </router-view>
     </AppLayout>    
   
