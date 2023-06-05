@@ -1,4 +1,6 @@
 <template>
+    <v-carousel hide-delimiters>
+
   <div class="questions">
     <v-row>
       <v-col cols="6" v-for="question in questions" :key="question.id">
@@ -6,6 +8,8 @@
       </v-col>
     </v-row>
   </div>
+  
+</v-carousel>
 </template>
     
     
