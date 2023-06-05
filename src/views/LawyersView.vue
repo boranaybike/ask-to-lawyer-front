@@ -13,11 +13,11 @@
   <script>
   import { defineComponent, onMounted, ref } from 'vue';
   import lawyersCard from '@/components/lawyersCard.vue'
-import axiosInstance from '@/services/Service.service';
+  import axiosInstance from '@/services/Service.service';
   
   export default defineComponent({
     name: 'LawyersView',
-    components: { lawyersCard},
+    components: { lawyersCard },
     
     setup() {
       const lawyers= ref(null);

@@ -5,7 +5,7 @@
 
         <AppLayout>
         <router-view>
-          
+
         </router-view>
     </AppLayout>    
   

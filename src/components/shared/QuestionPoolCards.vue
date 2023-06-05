@@ -6,7 +6,8 @@
     >
       <v-card-item>
         <div>
-          <v-row>      <v-col cols="2">
+          <v-row>      
+            <v-col cols="2">
         <v-sheet class="pa-2 ma-2">
             <v-avatar
             display="flex"
@@ -19,7 +20,7 @@
         <v-sheet class="pa-2 ma-2">
           <div style="display: flex; justify-content: left; font-size: 13px; width: 90px; height: 18px; left: 167px; top: 282px;">
 
-            Cem Karaca
+            {{clientName}}
           </div>
           <div style="display: flex; justify-content: left; font-size: 8px;">
             5 gün önce soruldu
@@ -30,7 +31,9 @@
           <div style="display: flex; padding-left: 12px; font-size: 10px;">
             Ceza Hukuku
           </div>
-          <div style="padding-left: 6px; font-size: 18px;" class="text-caption">“ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam? ”</div>
+          <div style="padding-left: 6px; font-size: 18px;" class="text-caption">
+            " {{ description }} "
+          </div>
         </div>
       </v-card-item>
   
@@ -49,6 +52,21 @@ import teklifVer from '@/components/lawyer/teklifVer.vue'
   
   export default defineComponent({
     name: 'QuestionPoolCards',
+    props: {
+          clientName: {
+            type: String,
+            required: false
+          },
+          description: {
+            required: true
+          },
+          maxPrice: {
+            required: false
+          },
+          minPrice: {
+            required: false
+          },
+        },
     components: { teklifVer },
   });
 </script>

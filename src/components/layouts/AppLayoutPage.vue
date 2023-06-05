@@ -15,7 +15,8 @@
           </div>
         </div>
         <v-container
-          style="min-height: 100%;"
+          style="min-height: 100%;
+          "
         >
         <slot />
         </v-container>
@@ -56,6 +57,5 @@ import { ref, computed} from 'vue';
   align-items: center;
   justify-content: center;
 }
-
 
 </style>
