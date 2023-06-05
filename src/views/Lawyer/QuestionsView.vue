@@ -1,7 +1,10 @@
 <template>
+  <v-carousel hide-delimiters>
+    
     <div class="questions">
       <QuestionPoolCards/>
     </div>
+  </v-carousel>
   </template>
     
     
