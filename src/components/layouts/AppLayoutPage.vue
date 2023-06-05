@@ -2,7 +2,9 @@
   <v-card>
     <v-layout :class="{'layout1': !showSidebar , 'layout2': showSidebar}">
       
-      <v-main style="height:%100">
+      <v-main style="height:%100; padding-top: 75px;"
+          >
+        
       <div v-if="showSidebar">
         <div v-if="lawyer">
             <LawyerNavigationDrawer/>
@@ -12,7 +14,8 @@
           </div>
         </div>
         <v-container
-          style="min-height: 100%;"
+          style="min-height: 100%;
+          "
         >
         <slot />
         </v-container>
@@ -25,6 +28,7 @@
 <script setup lang="ts">
 import CustomerNavigationDrawer from "@/components/shared/CustomerNavigationDrawer.vue"
 import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.vue"
+
 import { useRoute } from "vue-router";
 import { ref, computed} from 'vue';
     const lawyer = ref(false);
@@ -52,6 +56,5 @@ import { ref, computed} from 'vue';
   align-items: center;
   justify-content: center;
 }
-
 
 </style>

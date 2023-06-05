@@ -6,24 +6,11 @@
       <signupModal/>
       <frame18/>
       <frame21/>
-      
-
     </div>
 
     <div>
-      <v-btn @click="signinModalShow = true">Giriş Yap</v-btn>
-      <Teleport to="body">
-      <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
-      </Teleport>
-    </div>
-
-
-    <div>
-      
      <Comment/>
     </div>
-
-
 
   </div>
 
@@ -35,8 +22,6 @@ import { defineComponent } from 'vue';
 import { ref } from 'vue';
 import signinModal from '../components/Signin.vue'
 import signupModal from '../components/Signup.vue'
-
-
 import profile from '../components/shared/LawyerProfileEdit.vue'
 import frame18 from '../components/frame18.vue'
 import frame21 from '../components/frame21.vue'
