@@ -1,9 +1,5 @@
 <template>
-      
-
-      <v-app-bar
-        color="transparent"
-      >
+      <v-app-bar>
         <template v-slot:prepend>
           <router-link style="text-decoration: none;" to="/anasayfa"> <img width="170" style="margin-bottom: 15px; margin-left: 30px;" src="@/assets/images/libraa.png" />  </router-link>
         </template>
@@ -43,3 +39,9 @@ export default defineComponent({
     
 });
 </script>
+
+<style scoped>
+.v-app-bar.v-toolbar{
+  background-color:rgba(255, 255, 255, 0.586)!important;
+}
+</style>
