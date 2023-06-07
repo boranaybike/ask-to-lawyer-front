@@ -24,10 +24,12 @@
       <v-divider></v-divider>
   
       <v-card-actions class="question-state">
+        <router-link style="text-decoration: none;" to="/customer-offers"> 
         <p>
           <v-icon icon="mdi-heart" size="18" color="red" class="me-1 pb-1"></v-icon>
           teklifleri gör
         </p>
+      </router-link>
       </v-card-actions>
     </v-card>
   </template>
