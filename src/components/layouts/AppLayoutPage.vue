@@ -36,7 +36,7 @@ import { ref, computed} from 'vue';
     const lawyer = ref(false);
     const route = useRoute();
     const showSidebar = computed(() => {
-      return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/lawyers' ? false : true;
+      return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/lawyers' || route.path === '/homepage' ? false : true;
 })
 </script>
 
