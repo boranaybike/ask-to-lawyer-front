@@ -1,118 +1,178 @@
 <template>
-  <div class="text-center">
-    <v-dialog
-      v-model="dialog"
-      width="auto"
-    >
-      <template v-slot:activator="{ props }">
-        <v-btn
-          color="primary"
-          v-bind="props"
-        >
-          Open Dialog
-        </v-btn>
-      </template>
+  <div class="full-page">
+    <div class="page">
+      <div class="v-row">
+        <div class="v-col v-col-3">
+          <div  id="title" >
+            <v-card style="background-color: #ff6006; height: 85vh;">
+            <v-list style="background-color: #ff6006;">
+              <v-list-item align="center"
+                prepend-avatar="https://cdn.vuetifyjs.com/images/john.png"
+                title="Kader Mahkumu"
+              ></v-list-item>
+            </v-list>
+      
+            <v-divider></v-divider>
+      
+            <v-list style="background-color: #ff6006;">
+              <v-list-item style="color:white"
+                v-for="(item, i) in items"
+                :key="i"
+                :value="item"
+                color="black"
+              >
+                <v-list-item-title v-text="item.text"></v-list-item-title>
+              </v-list-item>
+            </v-list></v-card>
+          </div>
+        </div>
+        <div class="v-col v-col-9">
+          <v-card class="message-card" >
+              <div style="margin-bottom: 15px; margin-top: 15px; text-align:left; margin-left: 10px; color: white;">Av. Adalet Hanım</div>
+              
+            <v-divider></v-divider>
+            <v-card-text class="message-container">
+              <div v-for="(message, index) in messages" :key="index">
+  <v-row class="message-row">
+    <v-col cols="12" :class="{'text-right': message.isMine, 'text-left': !message.isMine}">
+      <div class="message-bubble" :class="{'message-bubble-right': message.isMine}">
+        {{ message.text }}
+      </div>
+    </v-col>
+   
+  
+    
+  </v-row>
+</div>
 
-      <v-card style="width: 750px;"><v-row>  <v-card-actions>
-          <v-btn  block @click="dialog = false"><v-icon icon="mdi-close"></v-icon></v-btn>
-        </v-card-actions></v-row>
-     <v-layout>
-      <v-navigation-drawer
-       
-        permanent
-        theme="dark"
-      >
-        <v-list nav>
-          <v-list-item style="background-color: rgb(255, 131, 43);" title="Kişi1" value="1"></v-list-item>
-          <v-list-item  title="Kişi2" value="2"></v-list-item>
-          <v-list-item  title="Kişi3" value="3"></v-list-item>
-        </v-list>
-      </v-navigation-drawer>
-      <v-main style="height: 400px"><div class="chat">
-    <div class="chat-container">
-      <div class="chat-messages">
-        <div v-for="message in messages" :key="message.id" class="chat-message">
-          <div class="chat-sender">{{ message.sender }}</div>
-          <div class="chat-text">{{ message.text }}</div>
+</v-card-text>
+
+              <v-card-actions>
+                <v-text-field
+                  v-model="newMessage"
+                  variant="solo"
+                  label="Mesajınızı girin..."
+                  append-icon="mdi-send"
+                  
+                  @click:append="sendMessage"
+                  :icon-color="'white'"
+                  class="message-input"
+                ></v-text-field>
+              </v-card-actions>
+            </v-card>
+            
+         
         </div>
       </div>
-      <div class="chat-input">
-        <v-text-field v-model="newMessage"  variant="solo" label="Message" @keyup.enter="sendMessage" ></v-text-field>
-        <v-btn color="primary" @click="sendMessage">Send</v-btn>
-      </div>
     </div>
-  </div></v-main>
-    </v-layout>
-    
-      </v-card>
-    </v-dialog>
   </div>
 </template>
 
 <script>
-  export default {
-    data () {
-      return {
-        dialog: false,
-        messages: [],
-        newMessage: ''
-      }
-    },
-    methods: {
+export default {
+  data() {
+    return {
+      messages: [
+        { text: "Merhaba", isMine: false },
+        { text: "Merhaba, nasılsınız?", isMine: true },
+        { text: "Ben iyiyim, teşekürler!", isMine: false },
+        
+      ],
+      newMessage: "",
+      items: [
+        { text: 'Av. Adalet Hanım'},
+        { text: 'Av. Hakim Bey'},
+        { text: 'Av. Falan Filan'},
+        { text: 'Av. Adalet Maker'},
+        { text: 'Av. Dua Lipa'},
+        { text: 'Av. Bella Hadid' },
+        { text: 'Av. 7' },
+      ],
+    };
+  },
+  methods: {
     sendMessage() {
       if (this.newMessage) {
-        this.messages.push({
-          id: this.messages.length + 1,
-          sender: 'User',
-          text: this.newMessage
-        });
-        this.newMessage = '';
+        this.messages.push({ text: this.newMessage, isMine: true });
+        this.newMessage = "";
       }
-    }
-  }
-  }
+    },
+  },
+};
 </script>
 
 <style scoped>
-.chat {
-  max-width: 600px;
-  margin: 0 auto;
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0 !important;
 }
 
-.chat-container {
-  background-color: #E7ECEF;
-  min-height: 400px;
-  border: 1px solid #ccc;
-  padding: 10px;
+div.v-container {
+  padding: 0 !important;
 }
 
-.chat-messages {
-  
-  max-height: 300px;
-  overflow-y: auto;
-  
+.title {
+  color: white;
 }
 
-.chat-message {
-  background-color: #9BA9B9;
-  border-radius: 10px;
-  margin-bottom: 10px;
-  width: min-content;
-  min-width: 75px;
-}
-
-.chat-sender {
-  font-weight: bold;
-}
-
-.chat-text {
-  margin-top: 5px;
-}
-
-.chat-input {
+.message-card {
+  width: 100%;
+  height: 85vh;
+  background-color: #9ba9b9a7;
   display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
 
-  margin-top: 10px;
+.message-container {
+  flex: 1;
+   overflow-x: hidden;
+  padding: 10px;
+  margin-right: -10px;
+  background-color: #E7ECEF;
+}
+
+.message-row {
+  margin-bottom: 10px;
+}
+
+.avatrMine {
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
+  text-align: left;
   
 }
+.avatarOther {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+.message-bubble {
+  padding: 10px;
+  border-radius: 16px;
+  background-color: #9BA9B9;
+  display: inline-block;
+  position: relative;
+  margin-left: 20px;
+  max-width: 500px;
+ 
+}
+
+.message-bubble-right {
+  background-color: #E99C7F;
+  color: white;
+  text-align: right;
+  margin-right: 20px;
+  max-width: 500px;
+}
+
+.message-input {
+  width: 100%;
+}
+
+
 </style>
+
