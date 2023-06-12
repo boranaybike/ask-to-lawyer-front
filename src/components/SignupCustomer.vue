@@ -1,20 +1,9 @@
 <template>
-  
-  <Transition name="customerModal">
+    <div class="customer-register">
+      
+      <v-card style="width: 500px; background-color: transparent;">
+              <v-card-item>
 
-    <div class="modal-mask">
-      <div class="modalContainer">
-        <v-form v-model="valid">
-        <button class = "cls_btn"
-              @click="$emit('close')"
-              ><v-icon icon="mdi-close"></v-icon>
-              
-        </button>
-            
-        <div class="modalHeader">   
-          <h3>Danışan Olarak Kayıt Ol</h3>
-        </div>
-        
         <v-text-field
           v-model="firstName"
           :rules="nameRules"
@@ -74,14 +63,15 @@
           :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
 
             ></v-text-field>
-            <v-btn rounded type="submit" block class="mt-2">Kayıt ol</v-btn> 
-      </v-form>
+            <v-btn @click="submitForm" style="background-color: #ff6006 ; color: white;">
+              Kayıt Ol            
+            </v-btn>
+        </v-card-item>
+      </v-card>
+  </div>
 
-      </div>
-    </div>
-
-  </Transition>
 </template>
+
 <script>
 import { defineComponent } from 'vue';
 import { ref, onMounted } from 'vue';
@@ -112,6 +102,11 @@ export default defineComponent({
         }
 
         const response = await axiosInstance.post('/Clients/Add', customer)
+        if (response.status === 200) {
+      const token = response.data.token; // Tokenı al
+      TokenService.saveToken(token); // Tokenı localStorage'a kaydet
+    }
+
         console.log(response.data) 
         
       } 
@@ -121,6 +116,7 @@ export default defineComponent({
     }
 
     return {
+      show,show2,firstName,lastName, email,password1,show1,password2,phone,submitForm,
       nameRules: ref([
         value => {
           if (value?.length > 20) return "İsim 20 karakterden fazla olamaz"
@@ -167,53 +163,6 @@ export default defineComponent({
 
 
 <style lang="scss" scoped>
-.modal-mask {
-  position: fixed;
-  justify-content: center;
-  align-items: center;
-  z-index: 9998;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  transition: opacity 0.3s ease;
-}
-.mt-2{
-    background-color:#EC4C0F;
-    color: white;
-    font-size:15px;
-    top: 50px;
-}
-.modalContainer {
-  position: relative;
-  width: 513px;
-  height: 90vh;
-  padding: 20px 30px;
-  border-radius: 20px;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.477),rgba(0, 0, 0, 0.477)),url(../assets/images/customer_signup.jpg);
-  background-position: center;
-  opacity: 0.99;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.33);
-  transition: all 0.3s ease;
-  background-size: cover;
 
-}
-.modalHeader h3 {
-  justify-content: center;
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 34px;
-  display: flex;
-  align-items: center;
-  color: #FFFFFF;
-  padding-bottom: 5%;
-}
-
-.cls_btn{
-  margin-left: 435px;
-  color: white;
-}
 
 </style>
