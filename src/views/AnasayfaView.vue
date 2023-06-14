@@ -80,12 +80,15 @@
 </v-main>
   </div>
 </template>
-<script lang="ts">
+<script>
 import { defineComponent, ref } from 'vue'
 import axiosInstance from '@/services/Service.service'
+import tokenService from "@/services/Token.service";
+import { useRouter } from 'vue-router'; // Vue Router'ı içe aktar
 
 export default defineComponent({
   setup() {
+    const router = useRouter(); // router nesnesini al
     const name = ref('')
     const description = ref('')
     const submitForm = async () => {
@@ -98,8 +101,15 @@ export default defineComponent({
           minPrice: 0,
         }
 
-        const response = await axiosInstance.post('/Questions/Add', data)
+        if (tokenService.getToken()) {        
+          const response = await axiosInstance.post('/Questions/Add', data)
         console.log(response.data) 
+
+      console.log('Form gönderiliyor...');
+    } else {
+      router.push('/customer-register');
+    }
+
         
         name.value = ''
         description.value = ''

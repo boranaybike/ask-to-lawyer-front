@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import tokenService from "@/services/Token.service";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -23,13 +24,19 @@ const routes: Array<RouteRecordRaw> = [
   {
     path: '/customer-pending-questions',
     name: 'customerPendingQuestions',
-    component: () => import('../views/Customer/CustomerPendingQuestionsView.vue')
+    component: () => import('../views/Customer/CustomerPendingQuestionsView.vue'),
+    meta: {
+      requiresActivation: true,
+    },
   },
   
   {
     path: '/customer-edit-account',
     name: 'customerEditAcount',
-    component: () => import('../views/Customer/CustomerEditAccountView.vue')
+    component: () => import('../views/Customer/CustomerEditAccountView.vue'),
+    meta: {
+      requiresActivation: true,
+    },
   },
     
   {
@@ -88,5 +95,21 @@ const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes
 })
+
+router.beforeEach((to, from, next) => {
+  const requiresActivation = to.meta.requiresActivation;
+
+  if (requiresActivation) {
+    const activationToken = tokenService.getToken();
+    
+    if (!activationToken) {
+      next('/customer-register');
+    } else {
+      next();
+    }
+  } else {
+    next();
+  }
+});
 
 export default router

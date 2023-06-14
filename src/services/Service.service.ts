@@ -23,9 +23,9 @@ axiosInstance.interceptors.request.use(
 
       if (
         error.response.status === 401 &&
-        originalRequest.url !== `${API_URL}/users/login`
+        originalRequest.url !== `${API_URL}/customer-register`
       ) {
-        router.push('/login');
+        router.push('/customer-register');
         return Promise.reject(error);
       }
   

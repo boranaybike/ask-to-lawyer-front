@@ -11,6 +11,7 @@
 
       <div>
       <v-btn @click="signinModalShow = true">Giriş Yap</v-btn>
+      <v-btn @click="exitFunction">çıkış</v-btn>
       <Teleport to="body">
       <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
       </Teleport>
@@ -23,6 +24,9 @@ import { defineComponent } from 'vue';
 import { ref } from 'vue';
 import signinModal from '../Signin.vue'
 import signupModal from '../Signup.vue'
+import tokenService from "@/services/Token.service";
+
+
 
 export default defineComponent({
   name: 'HomeView',
@@ -32,9 +36,18 @@ export default defineComponent({
 },
       setup() {
     const signinModalShow = ref(false);
-    const signupModalShow = ref(false);
+    const signupModalShow = ref(false);    
+    const exitFunction = () => {
+      try {
+        tokenService.removeToken(); 
+        
+      } 
+      catch (error) {
+        console.log(error)
+      }
+    }
    
-    return { signinModalShow , signupModalShow };
+    return { signinModalShow , signupModalShow, exitFunction };
   },
     
 });
