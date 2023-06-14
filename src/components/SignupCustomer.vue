@@ -76,6 +76,8 @@
 import { defineComponent } from 'vue';
 import { ref, onMounted } from 'vue';
 import axiosInstance from '@/services/Service.service';
+import tokenService from "@/services/Token.service";
+
 
 export default defineComponent({
   name: 'SignupCustomer',
@@ -103,9 +105,10 @@ export default defineComponent({
 
         const response = await axiosInstance.post('/Clients/Add', customer)
         if (response.status === 200) {
-      const token = response.data.token; // Tokenı al
-      TokenService.saveToken(token); // Tokenı localStorage'a kaydet
-    }
+        const token = response.data.activationToken; // Tokenı al
+        tokenService.saveToken(JSON.stringify({ activationToken: token })); // Tokenı localStorage'a kaydet
+
+        }
 
         console.log(response.data) 
         
