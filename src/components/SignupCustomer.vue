@@ -105,13 +105,9 @@ export default defineComponent({
 
         const response = await axiosInstance.post('/Clients/Add', customer)
         if (response.status === 200) {
-        const token = response.data.activationToken; // Tokenı al
-        tokenService.saveToken(JSON.stringify({ activationToken: token })); // Tokenı localStorage'a kaydet
-
-        }
-
-        console.log(response.data) 
-        
+        const token = response.data.accessToken;
+        tokenService.saveToken(token);
+        }        
       } 
       catch (error) {
         console.log(error)

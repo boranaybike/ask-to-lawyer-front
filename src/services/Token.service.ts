@@ -6,7 +6,7 @@ const TokenService = {
       }
       return null;
     },
-    saveToken(token: string): void {
+    async saveToken(token: string) {
       if (typeof window !== 'undefined') {
         localStorage.setItem('user', token);
       }

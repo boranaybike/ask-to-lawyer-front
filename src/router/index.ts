@@ -86,7 +86,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/customer-register',
     name: 'customerRegister',
     component: () => import("../views/Customer/CustmerRegisterView.vue")
-   
+  },
+  {
+    path: '/lawyer-register',
+    name: 'lawyerRegister',
+    component: () => import("../views/Lawyer/LawyerRegisterView.vue")
   },
 
 ]

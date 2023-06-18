@@ -1,24 +1,23 @@
 <template>
-  
-  <Transition name="lawyerModal">
-
-    <div class="modal-mask">
-      <div class="modalContainer">
-        <v-form v-model="valid">
-        <button class = "cls_btn"
-              @click="$emit('close')"
-              ><v-icon icon="mdi-close"></v-icon>
-        </button>
+      <div class="lawyer-register">
             
-        <div class="modalHeader">   
-          <h3>Avukat Olarak Kayıt Ol</h3>
-        </div>
-        
+      <v-card style="width: 500px; background-color: transparent;">
+              <v-card-item>
+
         <v-text-field
-          v-model="name"
+          v-model="firstName"
           :rules="nameRules"
-          :counter="30"
-          label="İsim & Soyisim"
+          :counter="20"
+          label="İsim"
+          required
+          bg-color="white"
+        ></v-text-field>
+
+        <v-text-field
+          v-model="lastName"
+          :rules="lastNameRules"
+          :counter="20"
+          label="Soyisim"
           required
           bg-color="white"
         ></v-text-field>
@@ -34,6 +33,14 @@
           <v-text-field 
             rounded
             v-model="baro"
+            label="Baro"
+            required
+            bg-color="white"
+          ></v-text-field>
+          
+          <v-text-field 
+            rounded
+            v-model="baroNo"
             :rules="barNoRules"
             label="Baro No"
             required
@@ -44,6 +51,13 @@
             v-model="phone"
             :rules="phoneRules"
             label="Telefon numarası"
+            required
+            bg-color="white"
+         ></v-text-field>
+         
+        <v-text-field
+            v-model="education"
+            label="Eğitim"
             required
             bg-color="white"
          ></v-text-field>
@@ -72,25 +86,23 @@
           :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
 
             ></v-text-field>
-            <v-btn rounded type="submit" block class="mt-2">Kayıt ol</v-btn> 
-      </v-form>
-
-      </div>
-    </div>
-
-  </Transition>
+            <v-btn @click="submitForm" block class="mt-2">Kayıt ol</v-btn> 
+    </v-card-item>
+      </v-card>
+  </div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
 import { ref, onMounted } from 'vue';
 import axiosInstance from '@/services/Service.service';
+import tokenService from "@/services/Token.service";
+
 
 export default defineComponent({
   name: 'SignupLawyer',
   components: {},
   setup() {
-  const show = ref(true);
   const show1 = ref(false);
   const show2 = ref(true);
   const firstName = ref('');
@@ -101,6 +113,7 @@ export default defineComponent({
   const baro = ref('');
   const baroNo = ref('');
   const phone = ref('');
+  const education = ref('');
 
     const submitForm = async () => {
       try {
@@ -112,11 +125,14 @@ export default defineComponent({
           password: password1.value,
           bar: baro.value,
           barNo: baroNo.value,
+          education: education.value,
         }
-
         const response = await axiosInstance.post('/Lawyers/Add', lawyer)
-        console.log(response.data) 
-        
+        console.log(response);
+        if (response.status === 200) {
+        const token = response.data.activationToken;
+        tokenService.saveToken(token);
+        }            
       } 
       catch (error) {
         console.log(error)
@@ -124,6 +140,7 @@ export default defineComponent({
     }
 
     return {
+      show1,show2,baro,baroNo,firstName,lastName, email,password1,show1,password2,phone,submitForm,education,
       nameRules: ref([
         value => {
           if (value?.length > 20) return "İsim 20 karakterden fazla olamaz"

@@ -4,7 +4,7 @@
   <div class="questions">
     <v-row>
       <v-col cols="6" v-for="question in questions" :key="question.id">
-        <QuestionPoolCards v-if="question" :clientName="question.clientName" :description="question.description" :maxPrice="question.maxPrice" :minPrice="question.minPrice"/>
+        <QuestionPoolCards v-if="question" :clientName="question.clientName" :questionId="question.id" :description="question.description" :maxPrice="question.maxPrice" :minPrice="question.minPrice" :clientId="question.clientId"/>
       </v-col>
     </v-row>
   </div>

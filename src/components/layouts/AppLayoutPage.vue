@@ -8,7 +8,7 @@
           >
         
       <div v-if="showSidebar">
-        <div v-if="lawyer">
+        <div v-if="role == 'lawyer'">
             <LawyerNavigationDrawer/>
           </div>
           <div v-else>  
@@ -33,8 +33,24 @@ import LawyerNavigationDrawer from "@/components/shared/LawyerNavigationDrawer.v
 import Header from "./Header.vue"
 import { useRoute } from "vue-router";
 import { ref, computed} from 'vue';
-    const lawyer = ref(false);
+import {Buffer} from "buffer/";
+import TokenService from "@/services/Token.service";
+
+    const role = ref("");
     const route = useRoute();
+    const activationToken = TokenService.getToken();
+    console.log(activationToken);
+    if(activationToken && activationToken!="undefined"){
+      console.log("deneme");
+      const userCredentials = JSON.parse(Buffer.from(activationToken!.split(".")[1], "base64").toString());
+      console.log(userCredentials.fullName);
+        if(userCredentials.role == "client"){
+          role.value = "client";
+        }
+        else if(userCredentials.role == "lawyer"){
+          role.value = "lawyer";
+        }
+    }
     const showSidebar = computed(() => {
       return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/lawyers' || route.path === '/messages' ? false : true;
 })
