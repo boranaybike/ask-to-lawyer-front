@@ -52,7 +52,7 @@ import TokenService from "@/services/Token.service";
         }
     }
     const showSidebar = computed(() => {
-      return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/lawyers' ? false : true;
+      return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/lawyers' || route.path === '/messages' ? false : true;
 })
 </script>
 
