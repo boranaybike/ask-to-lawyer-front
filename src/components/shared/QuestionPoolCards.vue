@@ -39,19 +39,102 @@
   
       <v-card-actions>
       
-      <teklifVer/>
+    <div class="text-center">
+          <v-btn @click="dialog=true">
+            Teklif Ver
+          </v-btn>
+      <v-dialog
+        v-model="dialog"
+        width="auto"
+      >
+    <v-card
+      class="mx-auto"
+      style="width: 444px; height: 300px;"
+    >
+      <v-card-item>
+        <div>
+          <v-row>      <v-col cols="2">
+        <v-sheet class="pa-2 ma-2">
+            <v-avatar
+            display="flex"
+            justify-content="left"
+            color="grey-darken-3"
+            image="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"
+          ></v-avatar></v-sheet>
+        </v-col>
+        <v-col>
+        <v-sheet class="pa-2 ma-2">
+          <div style="display: flex; justify-content: left; font-size: 13px; width: 90px; height: 18px; left: 167px; top: 282px;">
+
+            Cem Karaca
+          </div>
+          <div style="display: flex; justify-content: left; font-size: 8px;">
+            5 gün önce soruldu
+          </div></v-sheet>
+            </v-col>
+          </v-row>
+        
+          <div style="display: flex; padding-left: 12px; font-size: 10px;">
+            Ceza Hukuku
+          </div>
+          <div style="padding-left: 6px; font-size: 18px;" class="text-caption">“ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam? ”</div>
+        </div>
+      </v-card-item>
+      <v-text-field
+          label="Fiyat"
+          model-value=""
+          suffix="TL"
+          v-model="offerPrice"
+        ></v-text-field>
+  
+      <v-card-actions>
+        <v-btn @click="submitOffer" style="color:white; font-size:10px; display: flex; justify-content: center;" rounded >
+        Teklifi Gönder
+      </v-btn>
+
       </v-card-actions>
+    </v-card>
+      </v-dialog>          
+
+    </div>
+ </v-card-actions>
     </v-card>
   </template>
 
 
 <script>
-import { defineComponent } from 'vue';
-import teklifVer from '@/components/lawyer/teklifVer.vue'
-  
-  
-  export default defineComponent({
+import { defineComponent, ref } from 'vue';
+import axiosInstance from '@/services/Service.service';
+import TokenService from "@/services/Token.service";
+import {Buffer} from "buffer/";
+
+
+export default defineComponent({
     name: 'QuestionPoolCards',
+    setup(props) {
+
+    const dialog= ref(false);
+    const offerPrice = ref('');
+    const submitOffer = () => {
+      const activationToken = TokenService.getToken();
+      if(activationToken){
+        const userCredentials = JSON.parse(Buffer.from(activationToken.split(".")[1], "base64").toString());
+          const offer = {
+          lawyerId: userCredentials.uid,
+          questionId: props.questionId,
+          price: +offerPrice.value,
+          isAccepted: false,
+          clientId: props.clientId
+      }
+      const response = axiosInstance.post('/Offers/Add', offer);
+      console.log('Offer gönderiliyor...');
+      }
+    }
+
+
+    return{dialog, submitOffer, offerPrice};
+    },
+
     props: {
           clientName: {
             type: String,
@@ -66,8 +149,14 @@ import teklifVer from '@/components/lawyer/teklifVer.vue'
           minPrice: {
             required: false
           },
+          questionId:{
+            required: false
+          },
+          clientId:{
+            required: false
+          }
         },
-    components: { teklifVer },
+    components: { },
   });
 </script>
 

@@ -8,7 +8,6 @@
         <button class = "cls_btn"
               @click="$emit('close')"
               ><v-icon icon="mdi-close"></v-icon>
-              
         </button>
             
         <div class="modalHeader">   
@@ -26,7 +25,7 @@
 
 
         <v-text-field
-          v-model="password1"
+          v-model="password"
           :rules="password1Rules"
           label="Şifre"
           :type="show1 ? 'text' : 'password'"
@@ -39,7 +38,7 @@
 
 
       </v-form>
-      <v-btn rounded type="submit" block class="mt-2">Giriş Yap</v-btn> 
+      <v-btn rounded @click="submitForm" block class="mt-2">Giriş Yap</v-btn> 
 
       <div class="modal-footer">
           <slot name="footer">
@@ -55,13 +54,45 @@
 
 <script setup>
 import { ref, onMounted } from 'vue';
+import axiosInstance from '@/services/Service.service';
+import tokenService from "@/services/Token.service";
+import { useRouter } from 'vue-router';
+import {Buffer} from "buffer/";
 
   const show = ref(true);
   const show1 = ref(false);
   const show2 = ref(true);
   const email = ref('');
-  const password1 = ref('');       
+  const password = ref('');   
+  const emit = defineEmits(["close"])
+  const router = useRouter();    
+  const submitForm = async () => {
+      try {
+        const user = {
+          email: email.value,
+          password: password.value,
+        }
 
+        const response = await axiosInstance.post('/Authentication/Login', user)
+        if (response.status === 200) {
+        const token = response.data.accessToken;
+        await tokenService.saveToken(token);
+        const userCredentials = JSON.parse(Buffer.from(token.split(".")[1], "base64").toString());
+        console.log(userCredentials);
+        emit("close", false);
+        if(userCredentials.role == "client"){
+          router.push('/anasayfa');
+        }
+        else if(userCredentials.role == "lawyer"){
+          router.push('/questions');
+        }
+    }
+
+      } 
+      catch (error) {
+        console.log(error)
+      }
+    }
   const emailRules= ref([
         value => {
           if (/.+@.+\..+/.test(value)) return true;
