@@ -88,7 +88,7 @@
         ></v-text-field>
   
       <v-card-actions>
-        <v-btn @click="submitOffer" style="color:white; font-size:10px; display: flex; justify-content: center;" rounded >
+        <v-btn @click="submitOffer; dialog=false" style="color:white; font-size:10px; display: flex; justify-content: center;" rounded >
         Teklifi Gönder
       </v-btn>
 

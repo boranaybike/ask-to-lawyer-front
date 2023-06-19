@@ -6,8 +6,17 @@
 
   <div class="customer-offers">
     <v-row>
-      <v-col cols="6" v-for="offer in questionList" :key="offer.id">
-        <OffersCard v-if="offer" :offerPrice="offer.price"/>        
+        <v-col cols="6" v-for="offerGroup in offerMap" :key="offerGroup[0].id">
+          <template v-for="offer in offerGroup">
+        <OffersCard v-if="offer && offer.isAccepted ==false" 
+        :offerPrice="offer.price" 
+        :offerLawyerFirstName="offer.lawyerFirstName" 
+        :offerLawyerLastName="offer.lawyerLastName" 
+        :offerLawyerBar="offer.lawyerBar"
+        :offerId="offer.id"
+        :offerState="offer.isAccepted"
+        :question="getQuestionDescription(offer.questionId)"/>        
+      </template>
       </v-col>
     </v-row>
   </div>
@@ -26,15 +35,12 @@ import TokenService from "@/services/Token.service";
 export default defineComponent({
   name: 'CustomerOffersView',
   components: { OffersCard},
-
       
   setup() {
     const offers= ref();
-    const offerList = ref([]);
     const questions = ref();
     const questionList = ref([]);
-    const lawyers = ref();
-    const lawyerList= ref([]);
+    const offerMap = ref([]);
 
     const activationToken = TokenService.getToken();
     console.log(activationToken);
@@ -48,35 +54,36 @@ export default defineComponent({
 
           const customerOffers = await axiosInstance.post("/Offers/GetAll",{});
           offers.value = customerOffers.data;
+          
+          // await axiosInstance.post("/Offers/Update", offer);
+
 
           const customerQuestions = await axiosInstance.post("/Questions/GetAll", {});
           questions.value = customerQuestions.data;
 
-          const offerLawyers = await axiosInstance.post("/Lawyers/GetAll", {});
-          lawyers.value = offerLawyers.data;
-         
+          //userın tüm questionlarını alır
           questions.value.forEach((question) => {
             if (question.clientId == userCredentials.uid) {
               questionList.value.push(question);
             }
           });
 
-          const offerMap = questionList.value.map((question)=>
+          offerMap.value = questionList.value.map((question)=>
             offers.value.filter((offer)=>offer.questionId === question.id)
           );
-          
-          console.log("offer", offerMap);
-          const lawyerMap = offerMap.map((offer)=> offer.map((o)=> lawyers.value.filter((lawyer) => lawyer.id === o.lawyerId ))
-          );
-          console.log("lawyermap", lawyerMap);
+          console.log(offerMap.value);
         } 
       }
       catch (error) {
           console.log(error);
         }
       });
-  
-      return {questionList};
+      const getQuestionDescription = (questionId) => {
+      const question = questions.value.find((question) => question.id === questionId);
+      return question ? question.description : "";
+    };
+
+      return {questionList, offerMap, getQuestionDescription};
 
     },
 });

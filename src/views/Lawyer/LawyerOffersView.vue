@@ -4,19 +4,85 @@
     Tekliflerim
   </div>
 
-  <div class="lawyer-offers">
-    <LawyerOffersCard/>
+  <div class="lawyer-offers"><v-row>
+      <v-col cols="6" v-for="offer in offerList" :key="offer.id">
+          <LawyerOffersCard
+            v-if="offer"
+            :offerPrice="offer.price"
+            :offerClientFirstName="getClientName(offer.questionId)"
+            :offerLawyerBar="offer.lawyerBar"
+            :question="getQuestionDescription(offer.questionId)"
+            :offerState="offer.isAccepted"/>        
+      </v-col>
+    </v-row>
   </div>
 </template>
   
   
-<script lang="ts">
+<script>
 import LawyerOffersCard from '@/components/lawyer/LawyerOffersCard.vue';
-import { defineComponent } from 'vue';
+import { defineComponent, onMounted, ref } from 'vue';
+import axiosInstance from '@/services/Service.service';
+import {Buffer} from "buffer/";
+import TokenService from "@/services/Token.service";
 
 export default defineComponent({
   name: 'LawyerOffersView',
   components: { LawyerOffersCard },
+  setup() {
+    const offers= ref();
+    const offerList = ref([]);
+    const questions = ref();
+    const questionList = ref([]);
+    const questionMap = ref ([]);
+
+    const activationToken = TokenService.getToken();
+    console.log(activationToken);
+
+      onMounted(async () => {
+        try {
+
+          if(activationToken){
+
+          const userCredentials = JSON.parse(Buffer.from(activationToken.split(".")[1], "base64").toString());
+
+          const lawyerOffers = await axiosInstance.post("/Offers/GetAll",{});
+          offers.value = lawyerOffers.data;
+          
+          const lawyerQuestions = await axiosInstance.post("/Questions/GetAll", {});
+          questions.value = lawyerQuestions.data;
+
+          //userın tüm offerlarını alır
+          offers.value.forEach((o) => {
+            if (o.lawyerId == userCredentials.uid) {
+              offerList.value.push(o);
+            }
+          });
+          
+          questionMap.value = offerList.value.map((offer)=>
+            questions.value.filter((question)=>question.id === offer.questionId)
+          );
+          console.log(offerList);
+
+        } 
+      }
+      catch (error) {
+          console.log(error);
+        }
+      });
+      
+      const getQuestionDescription = (questionId) => {
+      const question = questions.value.find((question) => question.id === questionId);
+      return question ? question.description : "";
+    };
+
+    const getClientName = (questionId) => {
+      const question = questions.value.find((question) => question.id === questionId);
+      return question ? question.clientName : "";
+    };
+      return {offers, offerList, questionMap, getQuestionDescription, getClientName};
+
+    },
 });
 </script>
 

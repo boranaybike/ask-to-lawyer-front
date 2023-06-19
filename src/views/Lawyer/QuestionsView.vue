@@ -1,15 +1,13 @@
 <template>
-    <v-carousel hide-delimiters>
-
   <div class="questions">
     <v-row>
       <v-col cols="6" v-for="question in questions" :key="question.id">
-        <QuestionPoolCards v-if="question" :clientName="question.clientName" :questionId="question.id" :description="question.description" :maxPrice="question.maxPrice" :minPrice="question.minPrice" :clientId="question.clientId"/>
+        <QuestionPoolCards v-if="question" :clientName="question.clientName" :questionId="question.id" 
+        :description="question.description" :maxPrice="question.maxPrice" :minPrice="question.minPrice" 
+        :clientId="question.clientId"/>
       </v-col>
     </v-row>
   </div>
-  
-</v-carousel>
 </template>
     
     
