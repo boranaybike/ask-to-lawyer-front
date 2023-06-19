@@ -35,6 +35,8 @@ import { useRoute } from "vue-router";
 import { ref, computed} from 'vue';
 import {Buffer} from "buffer/";
 import TokenService from "@/services/Token.service";
+import LoginHeaderClient from "./LoginHeaderClient.vue";
+
 
     const role = ref("");
     const route = useRoute();
@@ -52,7 +54,7 @@ import TokenService from "@/services/Token.service";
         }
     }
     const showSidebar = computed(() => {
-      return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/lawyers' || route.path === '/messages' ? false : true;
+      return route.path === '/anasayfa' || route.path === '/questions' || route.path === '/signin' || route.path === '/lawyer-register' || route.path === '/customer-register' ||  route.path === '/lawyers' || route.path === '/messages' ? false : true;
 })
 </script>
 

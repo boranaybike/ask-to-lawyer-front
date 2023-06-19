@@ -1,10 +1,15 @@
 <template>
     <div class="customer-register">
       
-      <v-card style="width: 500px; background-color: transparent;">
+      <v-card style="width: 500px; background-color: transparent; backdrop-filter: blur(15px); border-radius: 3%; height: 95vh;">
+        <div class="signupCtitle">
+            <h2 style="color: white;">Danışan Olarak Kayıt Ol</h2>
+        </div>
               <v-card-item>
 
         <v-text-field
+          variant="solo"
+          rounded      
           v-model="firstName"
           :rules="nameRules"
           :counter="20"
@@ -14,6 +19,8 @@
         ></v-text-field>
 
         <v-text-field
+        variant="solo"
+          rounded  
           v-model="lastName"
           :rules="lastNameRules"
           :counter="20"
@@ -23,6 +30,8 @@
         ></v-text-field>
 
         <v-text-field
+        variant="solo"
+          rounded  
           v-model="email"
           :rules="emailRules"
           label="E-Posta"
@@ -32,6 +41,8 @@
 
 
         <v-text-field
+        variant="solo"
+          rounded  
             v-model="phone"
             :rules="phoneRules"
             label="Telefon numarası"
@@ -40,6 +51,8 @@
          ></v-text-field>
 
         <v-text-field
+        variant="solo"
+          rounded  
           v-model="password1"
           :rules="password1Rules"
           label="Şifre"
@@ -52,6 +65,8 @@
           ></v-text-field>
 
           <v-text-field
+          variant="solo"
+          rounded  
             v-model="password2"
             :rules="password2Rules"
             label="Şifre (tekrar)"
@@ -63,7 +78,7 @@
           :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
 
             ></v-text-field>
-            <v-btn @click="submitForm" style="background-color: #ff6006 ; color: white;">
+            <v-btn @click="submitForm" style="background-color: #EC4C0F ; color: white; height: 50px; font-size: 15px;" block class="mt-2">
               Kayıt Ol            
             </v-btn>
         </v-card-item>
@@ -162,6 +177,18 @@ export default defineComponent({
 
 
 <style lang="scss" scoped>
-
+  
+  .signupCtitle h2 {
+  justify-content: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
 
 </style>

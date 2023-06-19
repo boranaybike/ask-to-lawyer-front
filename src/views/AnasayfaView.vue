@@ -66,7 +66,8 @@
         </v-card>
       </v-col>
       <v-col cols="4">
-        <p style="color: white; text-align: left;"><br><br>Sorunuzu detaylı bir şekilde açıklayın <br><br><br>
+       
+        <p style="color: white; text-align: left; backdrop-filter: blur(2px);"><br><br>Sorunuzu detaylı bir şekilde açıklayın <br><br><br>
           İsteklerinize en uygun avukatlardan gelen fiyat tekliflerini karşılaştırın <br><br><br>
           Kendiniz için en uygun avukatı seçin ve ödeme yapın<br><br>
           Avukatlarımızdan yanıt geldiği zaman telefon ve mail yoluyla bilgilendirileceksiniz.<br><br><br>
