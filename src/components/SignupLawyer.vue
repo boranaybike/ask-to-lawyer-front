@@ -1,36 +1,63 @@
 <template>
       <div class="lawyer-register">
             
-      <v-card style="width: 500px; background-color: transparent;">
+      <v-card style="width: 600px; backdrop-filter: blur(15px); background-color: transparent; border-radius: 3%; height: 100vh;">
+        
+          <div class="signupLtitle">
+            <h2 style="color: white;">Avukat Olarak Kayıt Ol</h2>
+        </div>
+        
+        
+        
               <v-card-item>
-
-        <v-text-field
+      <v-row>
+        <v-col cols="6"><v-text-field
+        variant="solo"
           v-model="firstName"
           :rules="nameRules"
           :counter="20"
           label="İsim"
           required
           bg-color="white"
-        ></v-text-field>
-
+        ></v-text-field></v-col>
+        <v-col cols="6">
         <v-text-field
+        variant="solo"
+        rounded
           v-model="lastName"
           :rules="lastNameRules"
           :counter="20"
           label="Soyisim"
           required
           bg-color="white"
-        ></v-text-field>
-
-        <v-text-field
+        ></v-text-field></v-col>
+      </v-row>
+        
+      <v-row>
+        <v-col cols="6"><v-text-field
+          variant="solo"
+          rounded
           v-model="email"
           :rules="emailRules"
           label="E-Posta"
           required
           bg-color="white"
-          ></v-text-field>
-
+          ></v-text-field></v-col>
+        <v-col cols="6"><v-text-field
+        variant="solo"
+        rounded
+            v-model="phone"
+            :rules="phoneRules"
+            label="Telefon numarası"
+            required
+            bg-color="white"
+         ></v-text-field></v-col>
+      </v-row>
+        
+      <v-row>
+        <v-col cols="6">
           <v-text-field 
+          variant="solo"
             rounded
             v-model="baro"
             label="Baro"
@@ -38,7 +65,9 @@
             bg-color="white"
           ></v-text-field>
           
-          <v-text-field 
+          </v-col>
+          <v-col cols="6"><v-text-field 
+          variant="solo"
             rounded
             v-model="baroNo"
             :rules="barNoRules"
@@ -46,23 +75,21 @@
             required
             bg-color="white"
           ></v-text-field>
-
+        </v-col></v-row>
+         <v-row>
+          <v-col cols="12">
         <v-text-field
-            v-model="phone"
-            :rules="phoneRules"
-            label="Telefon numarası"
-            required
-            bg-color="white"
-         ></v-text-field>
-         
-        <v-text-field
+          variant="solo"
+          rounded
             v-model="education"
             label="Eğitim"
             required
             bg-color="white"
-         ></v-text-field>
-
-        <v-text-field
+         ></v-text-field></v-col> </v-row>
+          <v-row>
+            <v-col cols="6"> <v-text-field
+              variant="solo"
+              rounded
           v-model="password1"
           :rules="password1Rules"
           label="Şifre"
@@ -72,9 +99,10 @@
           :append-inner-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
           counter
           @click:append-inner = "show1 = !show1"  
-          ></v-text-field>
-
-          <v-text-field
+          ></v-text-field></v-col>
+            <v-col cols="6"><v-text-field
+              variant="solo"
+              rounded
             v-model="password2"
             :rules="password2Rules"
             label="Şifre (tekrar)"
@@ -85,8 +113,12 @@
             counter
           :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
 
-            ></v-text-field>
-            <v-btn @click="submitForm" block class="mt-2">Kayıt ol</v-btn> 
+            ></v-text-field></v-col>
+          </v-row>
+       
+
+          
+            <v-btn style="height: 50px;" @click="submitForm" block class="mt-2">Kayıt ol</v-btn> 
     </v-card-item>
       </v-card>
   </div>
@@ -195,6 +227,18 @@ export default defineComponent({
 
 
 <style lang="scss" scoped>
+.signupLtitle h2 {
+  justify-content: center;
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  color: #FFFFFF;
+  padding-bottom: 5%;
+  padding-top: 5%;
+}
 .modal-mask {
   position: fixed;
   justify-content: center;

@@ -92,6 +92,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'lawyerRegister',
     component: () => import("../views/Lawyer/LawyerRegisterView.vue")
   },
+  {
+    path: '/signin',
+    name: 'signin',
+    component: () => import("../views/SigninView.vue")
+  },
 
 ]
 

@@ -15,7 +15,8 @@
           <p class="text-h4 text--primary">KAYIT OL</p>
           <v-row dense>
             <v-col :cols="6"> 
-              <v-card>            
+              <router-link style="text-decoration: none;" to="/lawyer-register"> 
+              <v-card @click="dialog = false">            
                 <v-img
                   :src="require('@/assets/images/lawyer_signup.jpg')"
                   class="align-end"
@@ -25,17 +26,13 @@
                   <div>
                   <v-btn style="background-color: gray;" @click="signupLawyerShow = true">Avukat Olarak Kayıt Ol
                   </v-btn>
-                  <Teleport to="body">
-                  <signupLawyer v-if="signupLawyerShow" @close="signupLawyerShow= false">
-
-                  </signupLawyer>
-                </Teleport>
                 </div>
                 </v-img>
-              </v-card>
+              </v-card></router-link>
                   </v-col>
                   <v-col :cols="6">
-                  <v-card>
+                    <router-link style="text-decoration: none;" to="/customer-register"> 
+                  <v-card @click="dialog = false">
                       <v-img
                           :src="require('@/assets/images/customer_signup.jpg')"
                           class="align-end"
@@ -45,13 +42,10 @@
                         <div>
                           <v-btn style="background-color: gray;" @click="signupCustomerShow = true">Danışan Olarak Kayıt Ol
                           </v-btn>
-                          <Teleport to="body">
-                          <signupCustomer v-if="signupCustomerShow" @close="signupCustomerShow = false">
-                          </signupCustomer>
-                          </Teleport>
+                        
                         </div>
                       </v-img>
-              </v-card>
+              </v-card></router-link>
             </v-col>
           </v-row>
           <p>Üyeliğiniz var mı? <button href="" style="color:#EC4C0F;" @click="signinModalShow = true">giriş yapın.</button></p>

@@ -5,16 +5,17 @@
         </template>
 
         <v-spacer></v-spacer>
+        <router-link style="text-decoration: none;" to="/lawyers"><v-btn style="background-color:rgba(0, 0, 0, 0.715)" color="white"  >Sİze Hİzmet Verecek Avukatlarımız</v-btn> </router-link>
+        <v-spacer></v-spacer>
+
 
       <signupModal/>
 
 
       <div>
-      <v-btn @click="signinModalShow = true">Giriş Yap</v-btn>
-      <v-btn @click="exitFunction">çıkış</v-btn>
-      <Teleport to="body">
-      <signinModal v-if="signinModalShow" @close="signinModalShow = false"/>
-      </Teleport>
+        <router-link style="text-decoration: none;" to="/signin"> <v-btn style="color: black;">Gİrİş Yap</v-btn> </router-link>
+      
+
     </div>
 </v-app-bar>
 </template>

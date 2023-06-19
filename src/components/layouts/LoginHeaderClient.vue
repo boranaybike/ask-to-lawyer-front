@@ -8,7 +8,7 @@
         <router-link style="text-decoration: none;" to="/anasayfa"> <img width="170" style="margin-bottom: 15px; margin-left: 30px;" src="@/assets/images/libraa.png" />  </router-link>
       </template>
       <v-spacer></v-spacer>
-      <router-link style="text-decoration: none;" to="/questions"><v-btn style="background-color:rgba(0, 0, 0, 0.715)" color="white"  >Cevaplayabİleceğİnİz Sorular</v-btn> </router-link>
+      <router-link style="text-decoration: none;" to="/lawyers"><v-btn style="background-color:rgba(0, 0, 0, 0.715)" color="white"  >Sİze Hİzmet Verecek Avukatlarımız</v-btn> </router-link>
       <v-spacer></v-spacer>
 
     
@@ -23,7 +23,7 @@
     </template>
     <v-list>
       <v-list-item>
-        <router-link to="/lawyer-edit-account"><v-btn>Profİl</v-btn> </router-link>
+        <router-link to="/customer-edit-account"><v-btn>Profİl</v-btn> </router-link>
         
       </v-list-item>
       <v-list-item>
@@ -37,7 +37,6 @@
 <script lang="ts">
   export default{
     data: () => ({
-      
       
     }),
 

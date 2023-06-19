@@ -1,14 +1,11 @@
 <template>
   
-  <Transition name="signinModal">
-
-    <div class="modal-mask">
-      <div class="modalContainer">
+  <v-card style="background-color: transparent; backdrop-filter: blur(10px); width: 450px; border-radius: 5%; height: 90vh;">
+    <v-card-item>
+    
+    
         <v-form v-model="valid">
-        <button class = "cls_btn"
-              @click="$emit('close')"
-              ><v-icon icon="mdi-close"></v-icon>
-        </button>
+        
             
         <div class="modalHeader">   
           <h3>Giriş Yap</h3>
@@ -16,6 +13,8 @@
         
 
         <v-text-field
+          variant="solo"
+          rounded
           v-model="email"
           :rules="emailRules"
           label="E-Posta"
@@ -25,6 +24,8 @@
 
 
         <v-text-field
+          variant="solo"
+          rounded
           v-model="password"
           :rules="password1Rules"
           label="Şifre"
@@ -38,7 +39,7 @@
 
 
       </v-form>
-      <v-btn rounded @click="submitForm" block class="mt-2">Giriş Yap</v-btn> 
+      <v-btn style="height: 50px;" @click="submitForm" block class="mt-2">Giriş Yap</v-btn> 
 
       <div class="modal-footer">
           <slot name="footer">
@@ -46,10 +47,12 @@
           </slot>
         </div>
        
-      </div>
-    </div>
+      
+    
+  </v-card-item>
+  </v-card>
 
-  </Transition>
+  
 </template>
 
 <script setup>
@@ -139,6 +142,7 @@ import {Buffer} from "buffer/";
     display: flex;
     justify-content: center;
    top: 50px;
+   
 }
 .modalContainer {
   position: relative;
@@ -163,8 +167,8 @@ import {Buffer} from "buffer/";
   display: flex;
   align-items: center;
   color: #FFFFFF;
-  padding-bottom: 25%;
-  padding-top: 5%;
+  padding-bottom: 20%;
+  padding-top: 20%;
 }
 
 .cls_btn{
