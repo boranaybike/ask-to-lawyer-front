@@ -9,7 +9,7 @@
             <img
           style="border-radius: 50%; box-shadow: 0.1px 0.1px 10px grey; margin-top: 20px"
           width="100"
-          src="@/assets/images/ike.jpg"
+          src="@/assets/images/jdeep.png"
         />
         <h1>Av. {{name}}</h1>
           </template>
