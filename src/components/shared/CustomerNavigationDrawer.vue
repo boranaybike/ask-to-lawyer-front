@@ -3,12 +3,11 @@
       <v-layout>
         <v-navigation-drawer
           permanent
-          location="left"
-        >
+          location="left">
             <img
-          style="border-radius: 50%; box-shadow: 0.1px 0.1px 10px grey; margin-top: 20px"
-          width="100"
-          src="@/assets/images/ike.jpg"/>          
+          style="border-radius: 100%;  margin-top: 20px"
+          width="120"
+          src="@/assets/images/jdeep.png"/>          
           <h1>{{name}}</h1>
   
           <v-divider></v-divider>
@@ -43,7 +42,7 @@ export default defineComponent({
   name: "CustomerNavigationDrawer",
   
   setup() {
-    const name = ref("Haluk Levent");
+    const name = ref("Johnny Deep");
     return {
       name
     }
@@ -65,6 +64,7 @@ export default defineComponent({
 }
 .v-navigation-drawer{
 background-color:#EC4C0F!important;
+height: 100vh;
 }
 .menu{
   background-color: white !important;
