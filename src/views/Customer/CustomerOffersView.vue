@@ -43,7 +43,6 @@ export default defineComponent({
     const offerMap = ref([]);
 
     const activationToken = TokenService.getToken();
-    console.log(activationToken);
 
       onMounted(async () => {
         try {
@@ -55,9 +54,6 @@ export default defineComponent({
           const customerOffers = await axiosInstance.post("/Offers/GetAll",{});
           offers.value = customerOffers.data;
           
-          // await axiosInstance.post("/Offers/Update", offer);
-
-
           const customerQuestions = await axiosInstance.post("/Questions/GetAll", {});
           questions.value = customerQuestions.data;
 
@@ -68,10 +64,10 @@ export default defineComponent({
             }
           });
 
+          // userın tüm offerlarını alır
           offerMap.value = questionList.value.map((question)=>
             offers.value.filter((offer)=>offer.questionId === question.id)
           );
-          console.log(offerMap.value);
         } 
       }
       catch (error) {

@@ -1,6 +1,16 @@
 <template>              
-<Header/>
       
+<div v-if="role == 'lawyer'">
+            <LoginHeader/>
+          </div>
+        <div v-if="!role">
+            <Header/>
+          </div>
+          
+        <div v-if="role == 'client'">
+            <LoginHeaderClient/>
+          </div>
+          
   <v-card>
     <v-layout :class="{'layout1': !showSidebar , 'layout2': showSidebar}">
       
@@ -36,14 +46,13 @@ import { ref, computed} from 'vue';
 import {Buffer} from "buffer/";
 import TokenService from "@/services/Token.service";
 import LoginHeaderClient from "./LoginHeaderClient.vue";
+import LoginHeader from "./LoginHeader.vue";
 
 
     const role = ref("");
     const route = useRoute();
     const activationToken = TokenService.getToken();
-    console.log(activationToken);
     if(activationToken && activationToken!="undefined"){
-      console.log("deneme");
       const userCredentials = JSON.parse(Buffer.from(activationToken!.split(".")[1], "base64").toString());
       console.log(userCredentials.fullName);
         if(userCredentials.role == "client"){

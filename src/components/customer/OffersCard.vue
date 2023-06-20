@@ -1,8 +1,8 @@
 <template>
-    <v-card class="mx-auto my-12"
-      max-width="374">   
+    <v-card class="mx-auto my-12">   
     <v-card-item>
-           <v-row><v-col cols="6" style="text-align:left; position: absolute;
+           <v-row>
+            <v-col cols="6" style="text-align:left; position: absolute;
             top: -40px; left: 16px; overflow: visible;" > <v-avatar size="75"
             color="black"
               image="https://avataaars.io/?avatarStyle=Transparent&topType=ShortHairShortCurly&accessoriesType=Prescription02&hairColor=Black&facialHairType=Blank&clotheType=Hoodie&clotheColor=White&eyeType=Default&eyebrowType=DefaultNatural&mouthType=Default&skinColor=Light"

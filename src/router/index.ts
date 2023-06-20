@@ -63,9 +63,14 @@ const routes: Array<RouteRecordRaw> = [
     component: () => import("../views/Lawyer/EarningsView.vue")
   },
   {
-    path: '/messages',
+    path: '/customer-messages',
+    name: 'CMessagePage',
+    component: () => import("../views/CustomerMessagePage.vue")
+  },
+  {
+    path: '/lawyer-messages',
     name: 'MessagePage',
-    component: () => import("../views/MessagePage.vue")
+    component: () => import("../views/LawyerMessagePage.vue")
   },
   {
     path: '/anasayfa',

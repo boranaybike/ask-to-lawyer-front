@@ -12,7 +12,7 @@
       <v-spacer></v-spacer>
 
     
-      <router-link style="text-decoration: none;" to="/messages"><v-btn icon color="black"><v-icon>mdi-message</v-icon> </v-btn> </router-link>
+      <router-link style="text-decoration: none;" to="/customer-messages"><v-btn icon color="black"><v-icon>mdi-message</v-icon> </v-btn> </router-link>
 
 
     
@@ -27,7 +27,7 @@
         
       </v-list-item>
       <v-list-item>
-        <v-btn>Çıkış Yap</v-btn>
+        <v-btn @click="exitFunction(); navigateToHomePage(); ">Çıkış Yap</v-btn>
       </v-list-item>
     </v-list>
   </v-menu>
@@ -35,14 +35,42 @@
 </template>
 
 <script lang="ts">
-  export default{
-    data: () => ({
-      
-    }),
+import { defineComponent } from 'vue';
+import { ref } from 'vue';
+import signinModal from '../Signin.vue'
+import signupModal from '../Signup.vue'
+import tokenService from "@/services/Token.service";
+import { useRouter } from 'vue-router';
 
 
 
-  }
+export default defineComponent({
+  name: 'HomeView',
+  components: {
+    signinModal,
+    signupModal,
+},
+      setup() {
+    const signinModalShow = ref(false);
+    const signupModalShow = ref(false);    
+    const router = useRouter();
 
 
+    const navigateToHomePage = () => {
+  router.push('/anasayfa');
+};  
+    const exitFunction = () => {
+      try {
+        tokenService.removeToken(); 
+        
+      } 
+      catch (error) {
+        console.log(error)
+      }
+    }
+   
+    return { signinModalShow , signupModalShow, exitFunction, navigateToHomePage};
+  },
+    
+});
 </script>

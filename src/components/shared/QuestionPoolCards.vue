@@ -19,11 +19,7 @@
         <v-col>
         <v-sheet class="pa-2 ma-2">
           <div style="display: flex; justify-content: left; font-size: 13px; width: 90px; height: 18px; left: 167px; top: 282px;">
-
             {{clientName}}
-          </div>
-          <div style="display: flex; justify-content: left; font-size: 8px;">
-            5 gün önce soruldu
           </div></v-sheet>
             </v-col>
           </v-row>
@@ -65,11 +61,7 @@
         <v-col>
         <v-sheet class="pa-2 ma-2">
           <div style="display: flex; justify-content: left; font-size: 13px; width: 90px; height: 18px; left: 167px; top: 282px;">
-
-            Cem Karaca
-          </div>
-          <div style="display: flex; justify-content: left; font-size: 8px;">
-            5 gün önce soruldu
+            {{clientName}}
           </div></v-sheet>
             </v-col>
           </v-row>
@@ -77,7 +69,8 @@
           <div style="display: flex; padding-left: 12px; font-size: 10px;">
             Ceza Hukuku
           </div>
-          <div style="padding-left: 6px; font-size: 18px;" class="text-caption">“ Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam? ”</div>
+          <div style="padding-left: 6px; font-size: 18px;" class="text-caption">
+            " {{ description }} " </div>
         </div>
       </v-card-item>
       <v-text-field
@@ -88,7 +81,7 @@
         ></v-text-field>
   
       <v-card-actions>
-        <v-btn @click="submitOffer; dialog=false" style="color:white; font-size:10px; display: flex; justify-content: center;" rounded >
+        <v-btn @click="submitOffer(); dialog=false" style="color:white; font-size:10px; display: flex; justify-content: center;" rounded >
         Teklifi Gönder
       </v-btn>
 
@@ -114,9 +107,9 @@ export default defineComponent({
     setup(props) {
 
     const dialog= ref(false);
-    const offerPrice = ref('');
+    const offerPrice = ref('');      
+    const activationToken = TokenService.getToken();
     const submitOffer = () => {
-      const activationToken = TokenService.getToken();
       if(activationToken){
         const userCredentials = JSON.parse(Buffer.from(activationToken.split(".")[1], "base64").toString());
           const offer = {
@@ -124,7 +117,6 @@ export default defineComponent({
           questionId: props.questionId,
           price: +offerPrice.value,
           isAccepted: false,
-          clientId: props.clientId
       }
       const response = axiosInstance.post('/Offers/Add', offer);
       console.log('Offer gönderiliyor...');
