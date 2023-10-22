@@ -46,9 +46,9 @@
   </template>
 
 
-  <script>
-  import { defineComponent } from 'vue';
-  import { ref } from 'vue';
+<script>
+import { defineComponent } from 'vue';
+import { ref } from 'vue';
   
     export default defineComponent({
 
@@ -89,22 +89,20 @@
   },
     components: {},
          setup() {
-  
       return { };
     },
      
     })
-  </script>
+</script>
   
-  <style scoped lang="scss">
-
-  .mx-auto{
+<style scoped lang="scss">
+.mx-auto{
     border-radius: 5%;
     position: relative;
     overflow: visible;
-  }
+}
   
-  .mx-0 {
+.mx-0 {
     margin-bottom: 20px !important;
     margin-left: 50px !important;
 }
@@ -116,4 +114,4 @@
     margin-top: 35px;
 }
 
-  </style>
+</style>

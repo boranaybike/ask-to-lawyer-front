@@ -59,12 +59,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
 import { ref } from 'vue';
 import signupCustomer from '../components/SignupCustomer.vue';
 import signupLawyer from '../components/SignupLawyer.vue';
 import signinModal from '../components/Signin.vue';
-
 
 export default {
     name: "Signup",

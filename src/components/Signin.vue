@@ -2,15 +2,11 @@
   
   <v-card style="background-color: transparent; backdrop-filter: blur(10px); width: 450px; border-radius: 5%; height: 90vh;">
     <v-card-item>
-    
-    
+
         <v-form v-model="valid">
-        
-            
         <div class="modalHeader">   
           <h3>Giriş Yap</h3>
         </div>
-        
 
         <v-text-field
           variant="solo"
@@ -21,7 +17,6 @@
           required
           bg-color="white"
           ></v-text-field>
-
 
         <v-text-field
           variant="solo"
@@ -36,29 +31,21 @@
           counter
           @click:append-inner = "show1 = !show1"  
           ></v-text-field>
-
-
       </v-form>
       <v-btn style="height: 50px;" @click="submitForm" block class="mt-2">Giriş Yap</v-btn> 
-
       <div class="modal-footer">
-          <slot name="footer">
-            Şifreni mi unuttun?
-          </slot>
-        </div>
-       
-      
-    
-  </v-card-item>
+        <slot name="footer">
+          Şifreni mi unuttun?
+        </slot>
+      </div>
+    </v-card-item>
   </v-card>
-
-  
 </template>
 
 <script setup>
 import { ref, onMounted } from 'vue';
 import axiosInstance from '@/services/Service.service';
-import tokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 import { useRouter } from 'vue-router';
 import {Buffer} from "buffer/";
 

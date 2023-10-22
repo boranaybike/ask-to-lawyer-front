@@ -44,14 +44,14 @@ import Header from "./Header.vue"
 import { useRoute } from "vue-router";
 import { ref, computed} from 'vue';
 import {Buffer} from "buffer/";
-import TokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 import LoginHeaderClient from "./LoginHeaderClient.vue";
 import LoginHeader from "./LoginHeader.vue";
 
 
     const role = ref("");
     const route = useRoute();
-    const activationToken = TokenService.getToken();
+    const activationToken = tokenService.getToken();
     if(activationToken && activationToken!="undefined"){
       const userCredentials = JSON.parse(Buffer.from(activationToken!.split(".")[1], "base64").toString());
       console.log(userCredentials.fullName);

@@ -6,9 +6,6 @@
           <div class="signupLtitle">
             <h2 style="color: white;">Avukat Olarak Kayıt Ol</h2>
         </div>
-        
-        
-        
               <v-card-item>
       <v-row>
         <v-col cols="6"><v-text-field
@@ -113,11 +110,10 @@
             counter
           :append-inner-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
 
-            ></v-text-field></v-col>
+            ></v-text-field>
+          </v-col>
           </v-row>
        
-
-          
             <v-btn style="height: 50px;" @click="submitForm" block class="mt-2">Kayıt ol</v-btn> 
     </v-card-item>
       </v-card>
@@ -128,7 +124,7 @@
 import { defineComponent } from 'vue';
 import { ref, onMounted } from 'vue';
 import axiosInstance from '@/services/Service.service';
-import tokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 
 
 export default defineComponent({

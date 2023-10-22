@@ -11,12 +11,7 @@
       <router-link style="text-decoration: none;" to="/lawyers"><v-btn style="background-color:rgba(0, 0, 0, 0.715)" color="white"  >Sİze Hİzmet Verecek Avukatlarımız</v-btn> </router-link>
       <v-spacer></v-spacer>
 
-    
       <router-link style="text-decoration: none;" to="/customer-messages"><v-btn icon color="black"><v-icon>mdi-message</v-icon> </v-btn> </router-link>
-
-
-    
-
     <v-menu transition="slide-y-transition">
     <template v-slot:activator="{ props }">
       <v-btn icon color="black" v-bind="props"><v-icon>mdi-account</v-icon> </v-btn>
@@ -39,7 +34,7 @@ import { defineComponent } from 'vue';
 import { ref } from 'vue';
 import signinModal from '../Signin.vue'
 import signupModal from '../Signup.vue'
-import tokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 import { useRouter } from 'vue-router';
 
 

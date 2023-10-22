@@ -26,10 +26,6 @@
 </v-col><v-col class="text-left mt-5" cols="3"><div class="ml-4"  style="color:#ff6006" > <p>Kaynaklar</p> </div><br>
 
 
-
-
-
-
   <v-dialog v-model="dialog" width="800">
     <template v-slot:activator="{ props }">
       <v-btn

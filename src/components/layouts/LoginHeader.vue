@@ -39,7 +39,7 @@ import { defineComponent } from 'vue';
 import { ref } from 'vue';
 import signinModal from '../Signin.vue'
 import signupModal from '../Signup.vue'
-import tokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 import { useRouter } from 'vue-router';
 
 

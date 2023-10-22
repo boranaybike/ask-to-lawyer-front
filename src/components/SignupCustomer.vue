@@ -91,7 +91,7 @@
 import { defineComponent } from 'vue';
 import { ref, onMounted } from 'vue';
 import axiosInstance from '@/services/Service.service';
-import tokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 
 
 export default defineComponent({

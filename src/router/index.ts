@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory, RouteRecordRaw } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
-import tokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -14,13 +14,13 @@ const routes: Array<RouteRecordRaw> = [
     name: 'customerOffers',
     component: () => import('../views/Customer/CustomerOffersView.vue')
   },
-  
+
   {
     path: '/old-questions',
     name: 'oldQuestions',
     component: () => import('../views/Customer/OldQuestionsView.vue')
   },
-  
+
   {
     path: '/customer-pending-questions',
     name: 'customerPendingQuestions',
@@ -29,7 +29,7 @@ const routes: Array<RouteRecordRaw> = [
       requiresActivation: true,
     },
   },
-  
+
   {
     path: '/customer-edit-account',
     name: 'customerEditAcount',
@@ -38,7 +38,7 @@ const routes: Array<RouteRecordRaw> = [
       requiresActivation: true,
     },
   },
-    
+
   {
     path: '/lawyer-pending-questions',
     name: 'lawyerPendingQuestions',
@@ -76,7 +76,7 @@ const routes: Array<RouteRecordRaw> = [
     path: '/anasayfa',
     name: 'anasayfa',
     component: () => import("../views/AnasayfaView.vue")
-  },  
+  },
   {
     path: '/lawyers',
     name: 'lawyers',
@@ -115,7 +115,7 @@ router.beforeEach((to, from, next) => {
 
   if (requiresActivation) {
     const activationToken = tokenService.getToken();
-    
+
     if (!activationToken) {
       next('/customer-register');
     } else {

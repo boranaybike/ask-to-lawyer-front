@@ -98,7 +98,7 @@
 <script>
 import { defineComponent, ref } from 'vue';
 import axiosInstance from '@/services/Service.service';
-import TokenService from "@/services/Token.service";
+import tokenService from "@/services/token";
 import {Buffer} from "buffer/";
 
 

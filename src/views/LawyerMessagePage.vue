@@ -72,7 +72,7 @@
   import { defineComponent, onMounted, ref, computed } from 'vue';
   import axiosInstance from '@/services/Service.service';
   import { Buffer } from "buffer/";
-  import TokenService from "@/services/Token.service";
+  import tokenService from "@/services/token";
   
   export default defineComponent({
     name: 'LawyerMessagePage',
